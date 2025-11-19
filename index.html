@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Silver Bells Delights | Christmas Sweets & Savouries</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Configure Tailwind CSS and Font -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'christmas-red': '#C53030', /* Darker Red */
+                        'christmas-green': '#10743B', /* Darker Green */
+                        'christmas-gold': '#FDD835', /* Bright Gold */
+                        'accent-dark': '#3D0000',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom scrollbar for better aesthetics */
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        .scrollbar-hide {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+        /* Style for floating action buttons */
+        .floating-action-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 50;
+        }
+        .fab {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 56px;
+            height: 56px;
+            margin-top: 10px;
+            border-radius: 50%;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s, background-color 0.3s;
+        }
+        .fab:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans min-h-screen flex flex-col">
+
+    <!-- Header & Navigation -->
+    <header class="bg-christmas-red shadow-lg sticky top-0 z-20">
+        <div class="container mx-auto p-4 flex justify-between items-center max-w-7xl">
+            <h1 class="text-2xl sm:text-3xl font-extrabold text-white tracking-wider">
+                <span class="text-christmas-gold">Silver Bells</span> Delights
+            </h1>
+            <button id="cart-button" class="relative p-2 bg-christmas-green hover:bg-green-700 text-white rounded-full shadow-md transition duration-300 transform hover:scale-105" aria-label="View Cart">
+                <!-- Shopping Cart Icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6">
+                    <circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                </svg>
+                <span id="cart-count" class="absolute top-0 right-0 inline-flex items-center justify-center w-5 h-5 text-xs font-bold leading-none text-christmas-red transform translate-x-1/2 -translate-y-1/2 bg-white rounded-full border-2 border-christmas-gold">0</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="container mx-auto p-4 flex-grow max-w-7xl">
+        
+        <!-- Hero Section -->
+        <section class="mb-10 bg-christmas-green p-6 sm:p-10 rounded-xl shadow-2xl border-4 border-christmas-gold text-center">
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-2">
+                Hyderabad's Homemade Christmas Tradition!
+            </h2>
+            <p class="text-lg text-gray-200 mb-4">
+                Freshly made with love by Isabel Besterwitch D'Cruz.
+            </p>
+            <div class="inline-block px-6 py-2 bg-christmas-gold text-accent-dark font-bold rounded-full shadow-md text-sm sm:text-base transform hover:scale-105 transition duration-300">
+                <p>FREE Home Delivery Available!</p>
+            </div>
+        </section>
+
+        <!-- Product Segments -->
+        <div id="product-segments">
+            <!-- Product categories and grids will be injected here by JavaScript -->
+        </div>
+
+    </main>
+    
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-6 mt-10">
+        <div class="container mx-auto text-center max-w-7xl">
+            <p>&copy; <span id="current-year"></span> Silver Bells Delights. Contact Isabel Besterwitch D'Cruz.</p>
+            <p class="text-sm text-gray-400 mt-1">Contact for orders: 9398352048 / 7981042464</p>
+        </div>
+    </footer>
+
+    <!-- Floating Action Buttons -->
+    <div class="floating-action-container flex flex-col items-end">
+        <a href="https://wa.me/919398352048?text=Hello%20Isabel,%20I%20saw%20your%20Christmas%20Sweets%20menu%20and%20would%20like%20to%20place%20an%20order." target="_blank" class="fab bg-christmas-green text-white" title="Order on WhatsApp">
+            <!-- WhatsApp Icon (Custom SVG) -->
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2c-5.46 0-9.9 4.44-9.9 9.9 0 1.75.52 3.42 1.49 4.87l-1.55 5.67 5.8-1.51c1.42.78 3.02 1.21 4.16 1.21.03 0 .06 0 .09 0 5.46 0 9.9-4.44 9.9-9.9.01-5.46-4.43-9.9-9.9-9.9zm4.78 13.56c-.23.63-1.07 1.07-1.55 1.13-.5.06-.94.03-1.4-.13-.46-.15-1.07-.3-2.38-1.01-1.63-.9-2.65-2.42-2.85-2.71-.2-.3-.18-.55 0-.82.17-.23.37-.47.59-.72.2-.24.2-.42.3-.64.08-.2.04-.37-.02-.52-.08-.16-.54-1.3-.74-1.78-.2-.47-.41-.4-.54-.42-.14-.02-.29-.02-.45-.02h-.42c-.15 0-.41.05-.63.31-.22.25-.85.83-.85 2.01 0 1.18.87 2.33.99 2.49.12.16 1.71 2.62 4.14 3.65 2.43 1.02 2.91.87 3.45.81.54-.06 1.07-.44 1.23-.74.16-.3.16-.56.11-.74-.06-.18-.23-.29-.48-.41z"/></svg>
+        </a>
+        <a href="tel:9398352048" class="fab bg-christmas-red text-white" title="Call Now">
+            <!-- Phone Icon (Lucide Icon alternative) -->
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-4.72-4.72 19.79 19.79 0 0 1-3.07-8.63A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+            </svg>
+        </a>
+    </div>
+
+    <!-- Cart Modal (Sidebar) -->
+    <div id="cart-modal" class="fixed inset-0 bg-gray-900 bg-opacity-75 z-30 hidden" aria-modal="true" role="dialog">
+        <div class="fixed right-0 top-0 h-full w-full sm:w-96 bg-white shadow-2xl p-6 flex flex-col transform transition-transform duration-300 translate-x-full" id="cart-sidebar">
+            <div class="flex justify-between items-center pb-4 border-b border-gray-200">
+                <h3 class="text-2xl font-bold text-accent-dark">Your Order (Cart)</h3>
+                <button id="close-cart-button" class="text-gray-500 hover:text-gray-900 p-2 rounded-full hover:bg-gray-100" aria-label="Close Cart">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><path d="M18 6L6 18M6 6l12 12"></path></svg>
+                </button>
+            </div>
+            <div id="cart-items" class="flex-grow my-4 overflow-y-auto scrollbar-hide">
+                <p id="empty-cart-message" class="text-gray-500 text-center py-8">Your cart is empty. Add some festive joy!</p>
+            </div>
+            <div id="order-summary" class="pt-4 border-t border-gray-200">
+                <div class="flex justify-between items-center mb-4">
+                    <span class="text-xl font-semibold">Total:</span>
+                    <span id="cart-total" class="text-2xl font-bold text-christmas-red">₹0</span>
+                </div>
+                <button id="whatsapp-order-button" class="w-full py-3 bg-christmas-green text-white font-bold rounded-lg shadow-lg hover:bg-green-800 transition duration-300 flex items-center justify-center disabled:opacity-50" disabled>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 w-5 h-5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                    Place Order via WhatsApp
+                </button>
+                <p class="text-xs text-center text-gray-500 mt-2">
+                    (Order sent to Isabel D'Cruz: 9398352048)
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Image Quick View Modal -->
+    <div id="quickview-modal" class="fixed inset-0 bg-gray-900 bg-opacity-75 z-40 hidden flex items-center justify-center p-4" aria-modal="true" role="dialog">
+        <div class="bg-white rounded-xl shadow-2xl max-w-lg w-full transform scale-0 transition-transform duration-300 ease-out" id="quickview-content">
+            <div class="p-6">
+                <div class="flex justify-between items-start border-b pb-3 mb-4">
+                    <h3 id="quickview-title" class="text-2xl font-bold text-accent-dark">Item Details</h3>
+                    <button id="close-quickview-button" class="text-gray-500 hover:text-gray-900 p-2 rounded-full hover:bg-gray-100" aria-label="Close details">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><path d="M18 6L6 18M6 6l12 12"></path></svg>
+                    </button>
+                </div>
+                <!-- Image Tag now references a real path -->
+                <img id="quickview-image" class="w-full h-auto rounded-lg mb-4 border border-gray-200" src="" alt="Product Image">
+                <p id="quickview-description" class="text-gray-600 mb-4"></p>
+                <div class="flex justify-between items-center">
+                    <span id="quickview-price" class="text-3xl font-extrabold text-christmas-red"></span>
+                    <button id="quickview-add-to-cart-btn" data-id="" class="py-2 px-4 bg-christmas-red text-white font-bold rounded-lg hover:bg-red-700 transition duration-300 shadow-md">
+                        Add to Cart
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Custom Alert/Message Box -->
+    <div id="message-box" class="fixed inset-0 flex items-center justify-center z-50 hidden">
+        <div class="bg-white p-6 rounded-xl shadow-2xl border-2 border-christmas-gold transform scale-0 transition-transform duration-300 ease-out" id="message-content">
+            <p id="message-text" class="text-lg font-semibold text-accent-dark"></p>
+            <button id="message-close-button" class="mt-4 w-full py-2 bg-christmas-red text-white font-bold rounded-lg hover:bg-red-700">OK</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- Configuration and Data ---
+            const WHATSAPP_NUMBER = '919398352048';
+            const APP_NAME = 'Silver Bells Delights';
+
+            // Function to generate a descriptive placeholder image URL (Used as fallback or if USE_PLACEHOLDERS is true)
+            function getPlaceholderUrl(name, category) {
+                const text = name.replace(/ /g, '+');
+                let color, bgColor;
+
+                if (category === 'Cakes') { bgColor = 'B91C1C'; color = 'FFFFFF'; }
+                else if (category === 'Sweets') { bgColor = 'FACC15'; color = '4F0000'; }
+                else if (category === 'Savouries') { bgColor = '15803D'; color = 'FFFFFF'; }
+                else { bgColor = '444444'; color = 'FFFFFF'; } // Meat
+                
+                return `https://placehold.co/300x200/${bgColor}/${color}?text=${text}`;
+            }
+
+            // Flag to easily switch between actual images and placeholders (Set to false to use the new file paths)
+            const USE_PLACEHOLDERS = false; 
+
+            // Consolidated Product data with the file paths
+            const rawProducts = [
+                { id: 'rum_cake', name: 'Rum Cake', category: 'Cakes', price: 750, unit: '1 kg', description: 'Rich, moist cake soaked in rum—a traditional Christmas favorite.', image_file: 'images/rum_cake.jpg' },
+                { id: 'wine_cake', name: 'Wine Cake', category: 'Cakes', price: 700, unit: '1 kg', description: 'A delicate cake baked with fine wine, perfect for the festive table.', image_file: 'images/wine_cake.jpg' },
+                { id: 'ribbon_cake', name: 'Ribbon Cake', category: 'Cakes', price: 600, unit: '1 kg', description: 'Classic layered ribbon cake with light, colorful icing.', image_file: 'images/ribbon_cake.jpg' },
+
+                { id: 'rose_cookies', name: 'Rose Cookies', category: 'Sweets', price: 80, unit: '10 pcs', description: 'Crispy, flower-shaped deep-fried cookies (Achappam).', image_file: 'images/rose_cookies.jpg' },
+                { id: 'kal_kals', name: 'Jaggery Kal Kals', category: 'Sweets', price: 400, unit: '1 kg', description: 'Traditional Christmas sweet shell-shaped pastries coated in jaggery syrup.', image_file: 'images/jaggery_kal_kals.jpg' },
+                { id: 'coconut_puffs', name: 'Sweet Coconut Puffs', category: 'Sweets', price: 450, unit: '1 kg', description: 'Flaky puffs filled with sweet, grated coconut.', image_file: 'images/sweet_coconut_puffs.jpg' },
+                { id: 'adrasams', name: 'Adrasams', category: 'Sweets', price: 420, unit: '1 kg', description: 'South Indian festive sweet made from rice flour and jaggery.', image_file: 'images/adrasams.jpg' },
+                { id: 'guava_cheese', name: 'Guava Cheese', category: 'Sweets', price: 860, unit: '1 kg', description: 'Firm, translucent confection made from fresh guava fruit pulp.', image_file: 'images/guava_cheese.jpg' },
+                { id: 'sweet_biscuit', name: 'Sweet Biscuit', category: 'Sweets', price: 450, unit: '1 kg', description: 'Simple, sweet homemade biscuits.', image_file: 'images/sweet_biscuit.jpg' },
+
+                { id: 'masala_murukulu', name: 'Masala Murukulu', category: 'Savouries', price: 450, unit: '1 kg', description: 'Spicy, crunchy spiral snack with aromatic spices.', image_file: 'images/masala_murukulu.jpg' },
+                { id: 'masala_murukulu_stick', name: 'Masala Murukulu Stick', category: 'Savouries', price: 450, unit: '1 kg', description: 'Crispy stick-shaped version of the spicy murukulu.', image_file: 'images/masala_murukulu.jpg' }, // Reusing image if specific stick image isn't available
+                { id: 'sakinula', name: 'Sakinula', category: 'Savouries', price: 480, unit: '1 kg', description: 'A traditional Telangana delicacy, thin crispy spirals.', image_file: 'images/sakinula.jpg' },
+                { id: 'palli_murukulu_papad', name: 'Palli Murukulu Papad', category: 'Savouries', price: 480, unit: '1 kg', description: 'Crunchy snack combined with groundnuts (palli).', image_file: 'images/masala_murukulu.jpg' }, // Reusing image
+                { id: 'namkeen_murukulu', name: 'Namkeen Murukulu', category: 'Savouries', price: 480, unit: '1 kg', description: 'Classic savory and salty murukulu snack.', image_file: 'images/masala_murukulu.jpg' }, // Reusing image
+                { id: 'palli_murukulu_small', name: 'Palli Murukulu Small', category: 'Savouries', price: 450, unit: '1 kg', description: 'Smaller pieces of the groundnut murukulu.', image_file: 'images/masala_murukulu.jpg' }, // Reusing image
+                
+                { id: 'salted_beef', name: 'Salted Beef (Raw)', category: 'Meat', price: 750, unit: '1 kg', description: 'High-quality raw salted beef, ready for curing or cooking.', image_file: 'images/salted_beef.jpg' },
+            ];
+
+            // Map the raw product data to include the correct image source (either file path or placeholder)
+            const products = rawProducts.map(p => ({
+                ...p,
+                image: USE_PLACEHOLDERS ? getPlaceholderUrl(p.name, p.category) : p.image_file
+            }));
+            
+            // Group products by category
+            const categorizedProducts = products.reduce((acc, product) => {
+                acc[product.category] = acc[product.category] || [];
+                acc[product.category].push(product);
+                return acc;
+            }, {});
+
+
+            let cart = []; // Array to hold { id, quantity, price, name }
+
+            // --- DOM Elements ---
+            const productSegmentsContainer = document.getElementById('product-segments');
+            const cartCountElement = document.getElementById('cart-count');
+            const cartItemsContainer = document.getElementById('cart-items');
+            const cartTotalElement = document.getElementById('cart-total');
+            const emptyCartMessage = document.getElementById('empty-cart-message');
+            const whatsappOrderButton = document.getElementById('whatsapp-order-button');
+            
+            // Cart Modal Elements
+            const cartModal = document.getElementById('cart-modal');
+            const cartSidebar = document.getElementById('cart-sidebar');
+            const cartButton = document.getElementById('cart-button');
+            const closeCartButton = document.getElementById('close-cart-button');
+            
+            // Quick View Modal Elements
+            const quickviewModal = document.getElementById('quickview-modal');
+            const quickviewContent = document.getElementById('quickview-content');
+            const closeQuickviewButton = document.getElementById('close-quickview-button');
+            const quickviewTitle = document.getElementById('quickview-title');
+            const quickviewImage = document.getElementById('quickview-image');
+            const quickviewDescription = document.getElementById('quickview-description');
+            const quickviewPrice = document.getElementById('quickview-price');
+            const quickviewAddToCartBtn = document.getElementById('quickview-add-to-cart-btn');
+
+            // Message Box Elements
+            const messageBox = document.getElementById('message-box');
+            const messageContent = document.getElementById('message-content');
+            const messageText = document.getElementById('message-text');
+            const messageCloseButton = document.getElementById('message-close-button');
+
+
+            // --- Utility Functions ---
+
+            function showMessage(text) {
+                messageText.textContent = text;
+                messageBox.classList.remove('hidden');
+                setTimeout(() => {
+                    messageContent.classList.add('scale-100');
+                }, 10);
+            }
+
+            function closeMessageBox() {
+                messageContent.classList.remove('scale-100');
+                setTimeout(() => {
+                    messageBox.classList.add('hidden');
+                }, 300);
+            }
+            
+            function findProductById(id) {
+                return products.find(p => p.id === id);
+            }
+
+            // --- Quick View Modal Logic ---
+            function openQuickView(productId) {
+                const product = findProductById(productId);
+                if (!product) return;
+
+                quickviewTitle.textContent = product.name;
+                quickviewImage.src = product.image;
+                quickviewImage.alt = product.name;
+                quickviewDescription.textContent = product.description;
+                quickviewPrice.textContent = `₹${product.price.toLocaleString('en-IN')} / ${product.unit}`;
+                quickviewAddToCartBtn.dataset.id = product.id;
+
+                quickviewModal.classList.remove('hidden');
+                setTimeout(() => {
+                    quickviewContent.classList.add('scale-100');
+                }, 10);
+            }
+
+            function closeQuickView() {
+                quickviewContent.classList.remove('scale-100');
+                setTimeout(() => {
+                    quickviewModal.classList.add('hidden');
+                }, 300);
+            }
+
+
+            // --- Cart Logic ---
+
+            function updateCartCount() {
+                const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+                cartCountElement.textContent = totalItems;
+            }
+
+            function updateCartTotal() {
+                const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+                cartTotalElement.textContent = `₹${total.toLocaleString('en-IN')}`;
+                whatsappOrderButton.disabled = cart.length === 0;
+            }
+
+            function addToCart(productId) {
+                const product = findProductById(productId);
+                const existingItem = cart.find(item => item.id === productId);
+
+                if (existingItem) {
+                    existingItem.quantity += 1;
+                } else {
+                    cart.push({
+                        id: product.id,
+                        name: product.name,
+                        price: product.price,
+                        unit: product.unit,
+                        quantity: 1
+                    });
+                }
+                showMessage(`${product.name} added to cart!`);
+                renderCart();
+            }
+
+            function updateCartItemQuantity(productId, newQuantity) {
+                const itemIndex = cart.findIndex(item => item.id === productId);
+
+                if (newQuantity <= 0) {
+                    cart.splice(itemIndex, 1);
+                } else {
+                    cart[itemIndex].quantity = newQuantity;
+                }
+                renderCart();
+            }
+
+            function renderCart() {
+                cartItemsContainer.innerHTML = '';
+                
+                if (cart.length === 0) {
+                    emptyCartMessage.classList.remove('hidden');
+                    updateCartCount();
+                    updateCartTotal();
+                    return;
+                }
+                
+                emptyCartMessage.classList.add('hidden');
+
+                cart.forEach(item => {
+                    const itemElement = document.createElement('div');
+                    itemElement.className = 'flex items-center justify-between p-3 border-b last:border-b-0';
+                    itemElement.innerHTML = `
+                        <div class="flex-1">
+                            <p class="font-semibold text-accent-dark">${item.name}</p>
+                            <p class="text-sm text-gray-500">₹${item.price.toLocaleString('en-IN')} / ${item.unit}</p>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <button data-id="${item.id}" data-action="decrease" class="p-1 bg-gray-200 rounded-md hover:bg-gray-300 text-accent-dark">-</button>
+                            <span class="w-6 text-center font-bold">${item.quantity}</span>
+                            <button data-id="${item.id}" data-action="increase" class="p-1 bg-gray-200 rounded-md hover:bg-gray-300 text-accent-dark">+</button>
+                            <button data-id="${item.id}" data-action="remove" class="text-christmas-red hover:text-red-700 ml-2" aria-label="Remove item">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+                            </button>
+                        </div>
+                    `;
+                    cartItemsContainer.appendChild(itemElement);
+                });
+
+                cartItemsContainer.querySelectorAll('button').forEach(button => {
+                    button.addEventListener('click', (e) => {
+                        const id = e.currentTarget.dataset.id;
+                        const action = e.currentTarget.dataset.action;
+                        const item = cart.find(i => i.id === id);
+
+                        if (!item) return;
+
+                        if (action === 'increase') {
+                            updateCartItemQuantity(id, item.quantity + 1);
+                        } else if (action === 'decrease') {
+                            updateCartItemQuantity(id, item.quantity - 1);
+                        } else if (action === 'remove') {
+                            updateCartItemQuantity(id, 0);
+                        }
+                    });
+                });
+
+                updateCartCount();
+                updateCartTotal();
+            }
+
+            function generateWhatsAppOrderLink() {
+                if (cart.length === 0) return;
+
+                const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+                let message = `*🎄 ${APP_NAME} - New Order 🎄*\n\n`;
+                message += `*Items Ordered:*\n`;
+
+                cart.forEach(item => {
+                    const itemTotal = item.price * item.quantity;
+                    message += `* ${item.name} (${item.unit}) x ${item.quantity} = ₹${itemTotal.toLocaleString('en-IN')}\n`;
+                });
+
+                message += `\n*Total Order Value: ₹${total.toLocaleString('en-IN')}*\n\n`;
+                message += `--- Please Fill Order Details Below ---\n`;
+                message += `1. Name:\n`;
+                message += `2. Phone:\n`;
+                message += `3. Delivery/Pickup (Specify):\n`;
+                message += `4. Full Address (If Delivery):\n`;
+                
+                const encodedMessage = encodeURIComponent(message);
+                const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMessage}`;
+                
+                window.open(whatsappUrl, '_blank');
+                hideCart();
+            }
+
+
+            // --- Rendering Functions ---
+
+            function renderProductSegments() {
+                for (const category in categorizedProducts) {
+                    const sectionElement = document.createElement('section');
+                    sectionElement.className = 'mb-12';
+                    
+                    const titleElement = document.createElement('h2');
+                    titleElement.className = 'text-3xl font-bold text-christmas-red mb-6 border-b-4 border-christmas-green pb-2';
+                    titleElement.textContent = category;
+
+                    const gridElement = document.createElement('div');
+                    // Responsive grid setup: 2 on mobile, 3 on tablet/md, 4 on desktop/lg
+                    gridElement.className = 'grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6';
+
+                    categorizedProducts[category].forEach(product => {
+                        const productCard = document.createElement('div');
+                        productCard.className = 'bg-white rounded-xl shadow-xl overflow-hidden hover:shadow-2xl transition duration-300 transform hover:scale-[1.02] border-t-4 border-christmas-gold flex flex-col';
+                        
+                        // Note: The onerror fallback ensures that if your image file is missing, a placeholder will appear instead.
+                        productCard.innerHTML = `
+                            <div data-id="${product.id}" class="h-40 bg-gray-100 overflow-hidden cursor-pointer image-link-item">
+                                <img src="${product.image}" onerror="this.onerror=null; this.src='${getPlaceholderUrl(product.name, product.category)}'" alt="${product.name}" class="w-full h-full object-cover transition duration-300 hover:opacity-80">
+                            </div>
+                            <div class="p-4 flex flex-col flex-grow">
+                                <h3 class="text-lg font-bold text-accent-dark mt-1">${product.name}</h3>
+                                <p class="text-sm text-gray-600">${product.unit}</p>
+                                <p class="text-2xl font-extrabold text-christmas-red my-2 flex-grow">₹${product.price.toLocaleString('en-IN')}</p>
+                                <button data-id="${product.id}" class="add-to-cart-btn w-full py-2 bg-christmas-green text-white font-bold rounded-lg hover:bg-green-700 transition duration-300 shadow-md">
+                                    Add to Cart
+                                </button>
+                            </div>
+                        `;
+                        gridElement.appendChild(productCard);
+                    });
+
+                    sectionElement.appendChild(titleElement);
+                    sectionElement.appendChild(gridElement);
+                    productSegmentsContainer.appendChild(sectionElement);
+                }
+
+                // Attach event listeners for "Add to Cart" and Quick View
+                document.querySelectorAll('.add-to-cart-btn').forEach(button => {
+                    button.addEventListener('click', (e) => {
+                        const productId = e.currentTarget.dataset.id;
+                        addToCart(productId);
+                        // If adding from QuickView, close it
+                        if (e.currentTarget.id === 'quickview-add-to-cart-btn') {
+                            closeQuickView();
+                        }
+                    });
+                });
+
+                document.querySelectorAll('.image-link-item').forEach(imgDiv => {
+                    imgDiv.addEventListener('click', (e) => {
+                        const productId = e.currentTarget.dataset.id;
+                        openQuickView(productId);
+                    });
+                });
+            }
+
+
+            // --- Cart Modal UI Interaction ---
+
+            function showCart() {
+                cartModal.classList.remove('hidden');
+                setTimeout(() => {
+                    cartSidebar.classList.remove('translate-x-full');
+                }, 10);
+            }
+
+            function hideCart() {
+                cartSidebar.classList.add('translate-x-full');
+                setTimeout(() => {
+                    cartModal.classList.add('hidden');
+                }, 300);
+            }
+
+            // --- Event Listeners Initialization ---
+
+            cartButton.addEventListener('click', showCart);
+            closeCartButton.addEventListener('click', hideCart);
+            cartModal.addEventListener('click', (e) => {
+                if (e.target === cartModal) { hideCart(); }
+            });
+            whatsappOrderButton.addEventListener('click', generateWhatsAppOrderLink);
+            messageCloseButton.addEventListener('click', closeMessageBox);
+
+            // Quickview listeners
+            closeQuickviewButton.addEventListener('click', closeQuickView);
+            quickviewModal.addEventListener('click', (e) => {
+                if (e.target === quickviewModal) { closeQuickView(); }
+            });
+
+            // Re-attach the 'Add to Cart' listener for the modal button specifically
+            quickviewAddToCartBtn.addEventListener('click', (e) => {
+                const productId = e.currentTarget.dataset.id;
+                addToCart(productId);
+                closeQuickView(); // Close after adding
+            });
+
+
+            // Set current year in footer
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+
+            // Initial rendering
+            renderProductSegments();
+            renderCart();
+        });
+    </script>
+</body>
+</html>
+
