@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Silver Bells Delights | Christmas Sweets & Savouries</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Configure Tailwind CSS and Font -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'christmas-red': '#C53030', /* Darker Red */
+                        'christmas-green': '#10743B', /* Darker Green */
+                        'christmas-gold': '#FDD835', /* Bright Gold */
+                        'accent-dark': '#3D0000',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom scrollbar for better aesthetics */
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        .scrollbar-hide {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+        /* Style for floating action buttons */
+        .floating-action-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 50;
+        }
+        .fab {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 56px;
+            height: 56px;
+            margin-top: 10px;
+            border-radius: 50%;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s, background-color 0.3s;
+        }
+        .fab:hover {
+            transform: scale(1.1);
+        }
+        /* Cart Sidebar Animation */
+        .cart-modal-open .translate-x-full {
+            transform: translateX(0);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans min-h-screen flex flex-col">
+
+    <!-- Header & Navigation -->
+    <header class="bg-christmas-red shadow-lg sticky top-0 z-20">
+        <div class="container mx-auto p-4 flex justify-between items-center max-w-7xl">
+            <h1 class="text-2xl sm:text-3xl font-extrabold text-white tracking-wider">
+                <span class="text-christmas-gold">Silver Bells</span> Delights
+            </h1>
+            <button id="cart-button" class="relative p-2 bg-christmas-green hover:bg-green-700 text-white rounded-full shadow-md transition duration-300 transform hover:scale-105" aria-label="View Cart">
+                <!-- Shopping Cart Icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6">
+                    <circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                </svg>
+                <span id="cart-count" class="absolute top-0 right-0 inline-flex items-center justify-center w-5 h-5 text-xs font-bold leading-none text-christmas-red transform translate-x-1/2 -translate-y-1/2 bg-white rounded-full border-2 border-christmas-gold">0</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="container mx-auto p-4 flex-grow max-w-7xl">
+        
+        <!-- Hero Section -->
+        <section class="mb-10 bg-christmas-green p-6 sm:p-10 rounded-xl shadow-2xl border-4 border-christmas-gold text-center">
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-2">
+                Hyderabad's Homemade Christmas Tradition!
+            </h2>
+            <p class="text-lg text-gray-200 mb-4">
+                Freshly made with love by Isabel Besterwitch D'Cruz.
+            </p>
+            <div class="inline-block px-6 py-2 bg-christmas-gold text-accent-dark font-bold rounded-full shadow-md text-sm sm:text-base transform hover:scale-105 transition duration-300">
+                <p>FREE Home Delivery Available!</p>
+            </div>
+        </section>
+
+        <!-- Product Segments -->
+        <div id="product-segments">
+            <!-- Product categories and grids will be injected here by JavaScript -->
+        </div>
+
+    </main>
+    
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-6 mt-10">
+        <div class="container mx-auto text-center max-w-7xl">
+            <p>&copy; <span id="current-year"></span> Silver Bells Delights. Contact Isabel Besterwitch D'Cruz.</p>
+            <p class="text-sm text-gray-400 mt-1">Contact for orders: 9398352048 / 7981042464</p>
+        </div>
+    </footer>
+
+    <!-- Floating Action Buttons -->
+    <div class="floating-action-container flex flex-col items-end">
+        <a href="https://wa.me/919398352048?text=Hello%20Isabel,%20I%20saw%20your%20Christmas%20Sweets%20menu%20and%20would%20like%20to%20place%20an%20order." target="_blank" class="fab bg-christmas-green text-white" title="Order on WhatsApp">
+            <!-- WhatsApp Icon (Custom SVG) -->
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2c-5.46 0-9.9 4.44-9.9 9.9 0 1.75.52 3.42 1.49 4.87l-1.55 5.67 5.8-1.51c1.42.78 3.02 1.21 4.16 1.21.03 0 .06 0 .09 0 5.46 0 9.9-4.44 9.9-9.9.01-5.46-4.43-9.9-9.9-9.9zm4.78 13.56c-.23.63-1.07 1.07-1.55 1.13-.5.06-.94.03-1.4-.13-.46-.15-1.07-.3-2.38-1.01-1.63-.9-2.65-2.42-2.85-2.71-.2-.3-.18-.55 0-.82.17-.23.37-.47.59-.72.2-.24.2-.42.3-.64.08-.2.04-.37-.02-.52-.08-.16-.54-1.3-.74-1.78-.2-.47-.41-.4-.54-.42-.14-.02-.29-.02-.45-.02h-.42c-.15 0-.41.05-.63.31-.22.25-.85.83-.85 2.01 0 1.18.87 2.33.99 2.49.12.16 1.71 2.62 4.14 3.65 2.43 1.02 2.91.87 3.45.81.54-.06 1.07-.44 1.23-.74.16-.3.16-.56.11-.74-.06-.18-.23-.29-.48-.41z"/></svg>
+        </a>
+        <a href="tel:9398352048" class="fab bg-christmas-red text-white" title="Call Now">
+            <!-- Phone Icon (Lucide Icon alternative) -->
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-4.72-4.72 19.79 19.79 0 0 1-3.07-8.63A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+            </svg>
+        </a>
+    </div>
+
+    <!-- Cart Modal (Sidebar) -->
+    <div id="cart-modal" class="fixed inset-0 bg-gray-900 bg-opacity-75 z-30 hidden" aria-modal="true" role="dialog">
+        <div class="fixed right-0 top-0 h-full w-full sm:w-96 bg-white shadow-2xl p-6 flex flex-col transform transition-transform duration-300 translate-x-full" id="cart-sidebar">
+            <div class="flex justify-between items-center pb-4 border-b border-gray-200">
+                <h3 class="text-2xl font-bold text-accent-dark">Your Order (Cart)</h3>
+                <button id="close-cart-button" class="text-gray-500 hover:text-gray-900 p-2 rounded-full hover:bg-gray-100" aria-label="Close Cart">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><path d="M18 6L6 18M6 6l12 12"></path></svg>
+                </button>
+            </div>
+            <div id="cart-items" class="flex-grow my-4 overflow-y-auto scrollbar-hide">
+                <p id="empty-cart-message" class="text-gray-500 text-center py-8">Your cart is empty. Add some festive joy!</p>
+            </div>
+            <div id="order-summary" class="pt-4 border-t border-gray-200">
+                <div class="flex justify-between items-center mb-4">
+                    <span class="text-xl font-semibold">Total:</span>
+                    <span id="cart-total" class="text-2xl font-bold text-christmas-red">₹0</span>
+                </div>
+                <button id="whatsapp-order-button" class="w-full py-3 bg-christmas-green text-white font-bold rounded-lg shadow-lg hover:bg-green-800 transition duration-300 flex items-center justify-center disabled:opacity-50" disabled>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 w-5 h-5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                    Place Order via WhatsApp
+                </button>
+                <p class="text-xs text-center text-gray-500 mt-2">
+                    (Order sent to Isabel D'Cruz: 9398352048)
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Product Configuration Modal (Replaces Quick View) -->
+    <div id="quickview-modal" class="fixed inset-0 bg-gray-900 bg-opacity-75 z-40 hidden flex items-center justify-center p-4" aria-modal="true" role="dialog">
+        <div class="bg-white rounded-xl shadow-2xl max-w-lg w-full transform scale-0 transition-transform duration-300 ease-out" id="quickview-content">
+            <div class="p-6">
+                <div class="flex justify-between items-start border-b pb-3 mb-4">
+                    <h3 id="quickview-title" class="text-2xl font-bold text-accent-dark">Item Details</h3>
+                    <button id="close-quickview-button" class="text-gray-500 hover:text-gray-900 p-2 rounded-full hover:bg-gray-100" aria-label="Close details">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><path d="M18 6L6 18M6 6l12 12"></path></svg>
+                    </button>
+                </div>
+                <!-- Image Tag -->
+                <img id="quickview-image" class="w-full h-auto rounded-lg mb-4 border border-gray-200" src="" alt="Product Image" onerror="this.onerror=null; this.src='https://placehold.co/400x300/FDD835/3D0000?text=Image+Unavailable';">
+                <p id="quickview-description" class="text-gray-600 mb-4"></p>
+                
+                <!-- Configuration Options -->
+                <div id="config-options-container" class="mb-6 p-4 bg-gray-50 rounded-lg border border-gray-200">
+                    <!-- Dynamic configuration (weight/piece counter) is injected here -->
+                </div>
+
+                <div class="flex justify-between items-center">
+                    <div class="text-left">
+                        <span class="text-lg text-gray-600">Total Price:</span>
+                        <span id="quickview-total-price" class="text-3xl font-extrabold text-christmas-red block">₹0</span>
+                    </div>
+                    <button id="quickview-add-to-cart-btn" data-id="" class="py-3 px-6 bg-christmas-red text-white font-bold rounded-lg hover:bg-red-700 transition duration-300 shadow-md">
+                        Add to Order
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Custom Alert/Message Box -->
+    <div id="message-box" class="fixed inset-0 flex items-center justify-center z-50 hidden">
+        <div class="bg-white p-6 rounded-xl shadow-2xl border-2 border-christmas-gold transform scale-0 transition-transform duration-300 ease-out" id="message-content">
+            <p id="message-text" class="text-lg font-semibold text-accent-dark"></p>
+            <button id="message-close-button" class="mt-4 w-full py-2 bg-christmas-red text-white font-bold rounded-lg hover:bg-red-700">OK</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- Configuration and Data ---
+            const WHATSAPP_NUMBER = '919398352048'; // Using the number from the footer
+            const APP_NAME = 'Silver Bells Delights';
+
+            // Global state to hold the current product being configured
+            let currentProduct = null;
+            let currentConfig = {
+                quantity: 1, // For piece/kg/default count
+                size: '1 KG', // For weight-based items
+                calculatedPrice: 0,
+            };
+
+            // Function to generate a descriptive placeholder image URL (Used as fallback)
+            function getPlaceholderUrl(name, category) {
+                const text = name.replace(/ /g, '+');
+                let color, bgColor;
+
+                if (category === 'Cakes') { bgColor = 'C53030'; color = 'FFFFFF'; }
+                else if (category === 'Sweets') { bgColor = 'FDD835'; color = '3D0000'; }
+                else if (category === 'Savouries') { bgColor = '10743B'; color = 'FFFFFF'; }
+                else { bgColor = '444444'; color = 'FFFFFF'; } // Meat
+                
+                return `https://placehold.co/300x200/${bgColor}/${color}?text=${text}`;
+            }
+
+            // Flag to easily switch between actual images and placeholders
+            const USE_PLACEHOLDERS = false; 
+
+            // Consolidated Product data with configuration details
+            // basePrice is the price for 1 KG OR 1 PIECE, depending on configType.
+            const rawProducts = [
+                // Weight Configurable Products (Cakes: price is for 1 KG)
+                { id: 'rum_cake', name: 'Rum Cake', category: 'Cakes', basePrice: 750, configType: 'weight', unitLabel: 'per KG', description: 'Rich, moist cake soaked in rum—a traditional Christmas favorite.', image_file: 'images/rum_cake.jpg' },
+                { id: 'wine_cake', name: 'Wine Cake', category: 'Cakes', basePrice: 700, configType: 'weight', unitLabel: 'per KG', description: 'A delicate cake baked with fine wine, perfect for the festive table.', image_file: 'images/wine_cake.jpg' },
+                { id: 'ribbon_cake', name: 'Ribbon Cake', category: 'Cakes', basePrice: 600, configType: 'weight', unitLabel: 'per KG', description: 'Classic layered ribbon cake with light, colorful icing.', image_file: 'images/ribbon cake.jpg' },
+
+                // Piece Configurable Products (Rose Cookies: price is for 1 piece)
+                { id: 'rose_cookies', name: 'Rose Cookies', category: 'Sweets', basePrice: 10, configType: 'piece', unitLabel: 'per piece', description: 'Crispy, flower-shaped deep-fried cookies (Achappam). Price is ₹10 per piece.', image_file: 'images/rose_cookies.jpg' },
+                
+                // Default 1 KG Sweets (no configuration needed in modal, set to basePrice * 1)
+                { id: 'kal_kals', name: 'Jaggery Kal Kals', category: 'Sweets', basePrice: 400, unitLabel: 'per 1 KG', configType: 'none', description: 'Traditional Christmas sweet shell-shaped pastries coated in jaggery syrup.', image_file: 'images/jaggery_kal_kals1.jpg' },
+                { id: 'coconut_puffs', name: 'Sweet Coconut Puffs', category: 'Sweets', basePrice: 450, unitLabel: 'per 1 KG', configType: 'none', description: 'Flaky puffs filled with sweet, grated coconut.', image_file: 'images/coconut_puffs.jpg' },
+                { id: 'adrasams', name: 'Adrasams', category: 'Sweets', basePrice: 420, unitLabel: 'per 1 KG', configType: 'none', description: 'South Indian festive sweet made from rice flour and jaggery.', image_file: 'images/adrasams_1.jpg' },
+                { id: 'guava_cheese', name: 'Guava Cheese', category: 'Sweets', basePrice: 860, unitLabel: 'per 1 KG', configType: 'none', description: 'Firm, translucent confection made from fresh guava fruit pulp.', image_file: 'images/guava_cheese1.jpg' },
+                { id: 'sweet_biscuit', name: 'Sweet Biscuit', category: 'Sweets', basePrice: 450, unitLabel: 'per 1 KG', configType: 'none', description: 'Simple, sweet homemade biscuits.', image_file: 'images/sweet_biscuits.jpg' },
+
+                // Weight Configurable Savouries (price is for 1 KG)
+                { id: 'masala_murukulu', name: 'Masala Murukulu', category: 'Savouries', basePrice: 450, configType: 'weight', unitLabel: 'per KG', description: 'Spicy, crunchy spiral snack with aromatic spices.', image_file: 'images/masala_murukulus.jpg' },
+                { id: 'masala_murukulu_stick', name: 'Masala Murukulu Stick', category: 'Savouries', basePrice: 450, configType: 'weight', unitLabel: 'per KG', description: 'Crispy stick-shaped version of the spicy murukulu.', image_file: 'images/masala_murukulu_stick.jpg' }, 
+                { id: 'sakinula', name: 'Sakinalu', category: 'Savouries', basePrice: 480, configType: 'weight', unitLabel: 'per KG', description: 'A traditional Telangana delicacy, thin crispy spirals.', image_file: 'images/sakinula.jpg' },
+                { id: 'palli_murukulu_papad', name: 'Palli Murukulu Papad', category: 'Savouries', basePrice: 480, configType: 'weight', unitLabel: 'per KG', description: 'Crunchy snack combined with groundnuts (palli).', image_file: 'images/palli_murukulu_papad.jpg' }, 
+                { id: 'masala_murukulu_small', name: 'Masala Murukulu', category: 'Savouries', basePrice: 450, configType: 'weight', unitLabel: 'per KG', description: 'Smaller pieces of the groundnut murukulu.', image_file: 'images/masala_murukulu_small.jpg' }, 
+                
+                // Default 1 KG Meat (no configuration)
+                { id: 'salted_beef', name: 'Salted Beef (Raw)', category: 'Meat', basePrice: 750, unitLabel: 'per 1 KG', configType: 'none', description: 'High-quality raw salted beef, ready for curing or cooking.', image_file: 'images/salted_beef.jpg' },
+            ];
+
+            // Map the raw product data to include the correct image source (either file path or placeholder)
+            const products = rawProducts.map(p => ({
+                ...p,
+                image: USE_PLACEHOLDERS ? getPlaceholderUrl(p.name, p.category) : p.image_file
+            }));
+            
+            // Group products by category
+            const categorizedProducts = products.reduce((acc, product) => {
+                acc[product.category] = acc[product.category] || [];
+                acc[product.category].push(product);
+                return acc;
+            }, {});
+
+
+            let cart = []; // Array to hold { id, name, price, configLabel, quantity }
+
+            // --- DOM Elements ---
+            const productSegmentsContainer = document.getElementById('product-segments');
+            const cartCountElement = document.getElementById('cart-count');
+            const cartItemsContainer = document.getElementById('cart-items');
+            const cartTotalElement = document.getElementById('cart-total');
+            const emptyCartMessage = document.getElementById('empty-cart-message');
+            const whatsappOrderButton = document.getElementById('whatsapp-order-button');
+            
+            // Cart Modal Elements
+            const cartModal = document.getElementById('cart-modal');
+            const cartSidebar = document.getElementById('cart-sidebar');
+            const cartButton = document.getElementById('cart-button');
+            const closeCartButton = document.getElementById('close-cart-button');
+            
+            // Quick View Modal Elements
+            const quickviewModal = document.getElementById('quickview-modal');
+            const quickviewContent = document.getElementById('quickview-content');
+            const closeQuickviewButton = document.getElementById('close-quickview-button');
+            const quickviewTitle = document.getElementById('quickview-title');
+            const quickviewImage = document.getElementById('quickview-image');
+            const quickviewDescription = document.getElementById('quickview-description');
+            const configOptionsContainer = document.getElementById('config-options-container');
+            const quickviewTotalPrice = document.getElementById('quickview-total-price');
+            const quickviewAddToCartBtn = document.getElementById('quickview-add-to-cart-btn');
+
+            // Message Box Elements
+            const messageBox = document.getElementById('message-box');
+            const messageContent = document.getElementById('message-content');
+            const messageText = document.getElementById('message-text');
+            const messageCloseButton = document.getElementById('message-close-button');
+
+
+            // --- Utility Functions ---
+
+            function showMessage(text) {
+                messageText.textContent = text;
+                messageBox.classList.remove('hidden');
+                setTimeout(() => {
+                    messageContent.classList.add('scale-100');
+                }, 10);
+            }
+
+            function closeMessageBox() {
+                messageContent.classList.remove('scale-100');
+                setTimeout(() => {
+                    messageBox.classList.add('hidden');
+                }, 300);
+            }
+            
+            function findProductById(id) {
+                return products.find(p => p.id === id);
+            }
+            
+            /**
+             * Calculates the price based on current product configuration.
+             */
+            function calculatePrice() {
+                if (!currentProduct) return 0;
+
+                const basePrice = currentProduct.basePrice;
+
+                if (currentProduct.configType === 'weight') {
+                    // For weight-based items (Cakes, Savouries)
+                    if (currentConfig.size === '1/2 KG') {
+                        // Half KG is half the price of 1 KG (basePrice)
+                        currentConfig.calculatedPrice = basePrice / 2;
+                        currentConfig.configLabel = `1 x 1/2 KG`;
+                    } else {
+                        // 1 KG is the full base price
+                        currentConfig.calculatedPrice = basePrice;
+                        currentConfig.configLabel = `1 x 1 KG`;
+                    }
+                    // Quantity is always 1 for this price calculation
+                    currentConfig.quantity = 1;
+
+                } else if (currentProduct.configType === 'piece') {
+                    // For piece-based items (Rose Cookies)
+                    currentConfig.calculatedPrice = basePrice * currentConfig.quantity;
+                    currentConfig.configLabel = `${currentConfig.quantity} x piece`;
+                    
+                } else {
+                    // For default 1 KG items (no config)
+                    currentConfig.calculatedPrice = basePrice;
+                    currentConfig.configLabel = currentProduct.unitLabel;
+                    currentConfig.quantity = 1;
+                }
+
+                // Update the display price
+                quickviewTotalPrice.textContent = `₹${currentConfig.calculatedPrice.toLocaleString('en-IN')}`;
+            }
+
+
+            // --- Quick View Modal Logic ---
+
+            function openQuickView(productId) {
+                const product = findProductById(productId);
+                if (!product) return;
+
+                currentProduct = product;
+                
+                // Reset configuration state based on product type
+                if (product.configType === 'weight') {
+                    currentConfig = { quantity: 1, size: '1 KG', calculatedPrice: product.basePrice };
+                } else if (product.configType === 'piece') {
+                    currentConfig = { quantity: 10, size: '1 piece', calculatedPrice: product.basePrice * 10 }; // Default 10 pieces
+                } else {
+                    currentConfig = { quantity: 1, size: product.unitLabel, calculatedPrice: product.basePrice };
+                }
+                
+                quickviewTitle.textContent = product.name;
+                quickviewImage.src = product.image;
+                quickviewDescription.textContent = `${product.description} Base Price: ₹${product.basePrice} ${product.unitLabel}`;
+                quickviewAddToCartBtn.dataset.id = product.id;
+
+                renderConfigOptions();
+                calculatePrice(); // Initial price calculation
+
+                quickviewModal.classList.remove('hidden');
+                setTimeout(() => {
+                    quickviewContent.classList.add('scale-100');
+                }, 10);
+            }
+
+            function closeQuickView() {
+                quickviewContent.classList.remove('scale-100');
+                setTimeout(() => {
+                    quickviewModal.classList.add('hidden');
+                }, 300);
+            }
+
+            function renderConfigOptions() {
+                const product = currentProduct;
+                let configHtml = '';
+
+                if (product.configType === 'weight') {
+                    // Configuration for Cakes and Savouries (1/2 KG or 1 KG)
+                    configHtml = `
+                        <p class="font-semibold text-gray-700 mb-2">Select Weight:</p>
+                        <select id="weight-selector" onchange="window.handleWeightChange(event)"
+                            class="w-full p-3 border border-gray-300 rounded-lg focus:ring-christmas-red focus:border-christmas-red transition duration-150">
+                            <option value="1 KG" ${currentConfig.size === '1 KG' ? 'selected' : ''}>1 KG (₹${product.basePrice})</option>
+                            <option value="1/2 KG" ${currentConfig.size === '1/2 KG' ? 'selected' : ''}>1/2 KG (₹${product.basePrice / 2})</option>
+                        </select>
+                        <p class="text-sm text-gray-500 mt-2">Note: Price automatically adjusts based on weight.</p>
+                    `;
+                    
+                } else if (product.configType === 'piece') {
+                    // Configuration for Rose Cookies (Quantity counter)
+                    configHtml = `
+                        <p class="font-semibold text-gray-700 mb-2">Select Pieces (@ ₹${product.basePrice} per piece):</p>
+                        <div class="flex items-center justify-center space-x-4">
+                            <button onclick="window.updateQuantity(-1)" 
+                                class="w-10 h-10 bg-christmas-red text-white text-xl font-bold rounded-full hover:bg-red-700 transition duration-150 shadow-md flex items-center justify-center disabled:opacity-50"
+                                ${currentConfig.quantity <= 1 ? 'disabled' : ''}>
+                                -
+                            </button>
+                            <span id="piece-count" class="text-3xl font-extrabold text-accent-dark w-12 text-center">${currentConfig.quantity}</span>
+                            <button onclick="window.updateQuantity(1)" 
+                                class="w-10 h-10 bg-christmas-green text-white text-xl font-bold rounded-full hover:bg-green-700 transition duration-150 shadow-md flex items-center justify-center">
+                                +
+                            </button>
+                        </div>
+                        <p class="text-sm text-gray-500 mt-2 text-center">Price automatically adjusts based on the number of pieces.</p>
+                    `;
+
+                } else {
+                    // Configuration for default 1 KG items (display only)
+                    configHtml = `
+                        <p class="font-semibold text-gray-700 mb-1">Standard Item</p>
+                        <p class="text-lg text-christmas-red">${product.unitLabel} - ₹${product.basePrice.toLocaleString('en-IN')}</p>
+                        <p class="text-sm text-gray-500 mt-2">No size configuration required for this item.</p>
+                    `;
+                }
+
+                configOptionsContainer.innerHTML = configHtml;
+            }
+
+            // Global functions for event handlers in HTML
+            window.handleWeightChange = (event) => {
+                currentConfig.size = event.target.value;
+                calculatePrice();
+            };
+
+            window.updateQuantity = (delta) => {
+                const newQuantity = currentConfig.quantity + delta;
+                if (newQuantity >= 1) {
+                    currentConfig.quantity = newQuantity;
+                    document.getElementById('piece-count').textContent = newQuantity;
+                    renderConfigOptions(); // Re-render to update disabled state and ensure consistency
+                    calculatePrice();
+                }
+            };
+            
+
+            // --- Cart Logic ---
+
+            function updateCartCount() {
+                const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+                cartCountElement.textContent = totalItems;
+            }
+
+            function updateCartTotal() {
+                const total = cart.reduce((sum, item) => sum + item.totalPrice, 0);
+                cartTotalElement.textContent = `₹${total.toLocaleString('en-IN')}`;
+                whatsappOrderButton.disabled = cart.length === 0;
+            }
+            
+            /**
+             * Adds the currently configured product to the cart.
+             */
+            function addToCartFromConfig() {
+                if (!currentProduct) return;
+
+                const uniqueId = `${currentProduct.id}-${currentConfig.size}-${currentConfig.quantity}`;
+                const configLabel = currentConfig.configLabel;
+                
+                const existingItem = cart.find(item => item.uniqueId === uniqueId);
+
+                if (existingItem) {
+                    // If the exact same configuration exists, increment the main quantity count (not the config quantity)
+                    existingItem.orderQuantity += 1;
+                } else {
+                    // Add new item to cart
+                    cart.push({
+                        uniqueId: uniqueId,
+                        id: currentProduct.id,
+                        name: currentProduct.name,
+                        configLabel: configLabel, // e.g., "1/2 KG", "10 x piece", "per 1 KG"
+                        unitPrice: currentConfig.calculatedPrice, // Price for this specific config (e.g., 1/2 KG price, or 10 pieces price)
+                        totalPrice: currentConfig.calculatedPrice, // The total price starts as the unit price for the first order quantity
+                        orderQuantity: 1 // Quantity of this configured unit being ordered
+                    });
+                }
+                showMessage(`${currentProduct.name} (${configLabel}) added to cart!`);
+                renderCart();
+                closeQuickView();
+            }
+
+            function updateCartItemOrderQuantity(uniqueId, newOrderQuantity) {
+                const itemIndex = cart.findIndex(item => item.uniqueId === uniqueId);
+
+                if (newOrderQuantity <= 0) {
+                    cart.splice(itemIndex, 1);
+                } else {
+                    const item = cart[itemIndex];
+                    item.orderQuantity = newOrderQuantity;
+                    item.totalPrice = item.unitPrice * newOrderQuantity;
+                }
+                renderCart();
+            }
+
+            function renderCart() {
+                cartItemsContainer.innerHTML = '';
+                
+                if (cart.length === 0) {
+                    emptyCartMessage.classList.remove('hidden');
+                    updateCartCount();
+                    updateCartTotal();
+                    return;
+                }
+                
+                emptyCartMessage.classList.add('hidden');
+
+                cart.forEach(item => {
+                    const itemElement = document.createElement('div');
+                    itemElement.className = 'flex items-start justify-between p-3 border-b last:border-b-0';
+                    itemElement.innerHTML = `
+                        <div class="flex-1 pr-2">
+                            <p class="font-semibold text-accent-dark">${item.name}</p>
+                            <p class="text-sm text-gray-500">${item.configLabel}</p>
+                            <p class="text-sm text-gray-600 font-bold">₹${item.unitPrice.toLocaleString('en-IN')} each</p>
+                        </div>
+                        <div class="flex flex-col items-end">
+                            <div class="flex items-center space-x-2 mb-2">
+                                <button data-id="${item.uniqueId}" data-action="decrease" class="p-1 w-6 h-6 bg-gray-200 rounded-md hover:bg-gray-300 text-accent-dark flex items-center justify-center">-</button>
+                                <span class="w-6 text-center font-bold">${item.orderQuantity}</span>
+                                <button data-id="${item.uniqueId}" data-action="increase" class="p-1 w-6 h-6 bg-gray-200 rounded-md hover:bg-gray-300 text-accent-dark flex items-center justify-center">+</button>
+                            </div>
+                            <span class="text-lg font-extrabold text-christmas-red">₹${item.totalPrice.toLocaleString('en-IN')}</span>
+                        </div>
+                    `;
+                    cartItemsContainer.appendChild(itemElement);
+                });
+
+                // Event delegation for cart controls
+                cartItemsContainer.querySelectorAll('button[data-action]').forEach(button => {
+                    button.addEventListener('click', (e) => {
+                        const uniqueId = e.currentTarget.dataset.id;
+                        const action = e.currentTarget.dataset.action;
+                        const item = cart.find(i => i.uniqueId === uniqueId);
+
+                        if (!item) return;
+
+                        if (action === 'increase') {
+                            updateCartItemOrderQuantity(uniqueId, item.orderQuantity + 1);
+                        } else if (action === 'decrease') {
+                            updateCartItemOrderQuantity(uniqueId, item.orderQuantity - 1);
+                        } 
+                    });
+                });
+
+                updateCartCount();
+                updateCartTotal();
+            }
+
+            function generateWhatsAppOrderLink() {
+                if (cart.length === 0) return;
+
+                const total = cart.reduce((sum, item) => sum + item.totalPrice, 0);
+                let message = `*🎄 ${APP_NAME} - New Order 🎄*\n\n`;
+                message += `*Items Ordered:*\n`;
+
+                cart.forEach(item => {
+                    message += `* ${item.name} (${item.configLabel}) x ${item.orderQuantity} = ₹${item.totalPrice.toLocaleString('en-IN')}\n`;
+                });
+
+                message += `\n*Total Order Value: ₹${total.toLocaleString('en-IN')}*\n\n`;
+                message += `--- Please Fill Order Details Below ---\n`;
+                message += `1. Name:\n`;
+                message += `2. Phone:\n`;
+                message += `3. Delivery/Pickup (Specify):\n`;
+                message += `4. Full Address (If Delivery):\n`;
+                
+                const encodedMessage = encodeURIComponent(message);
+                const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMessage}`;
+                
+                window.open(whatsappUrl, '_blank');
+                hideCart();
+                // Optionally clear cart after placing order
+                // cart = [];
+                // renderCart();
+            }
+
+
+            // --- Rendering Functions ---
+
+            function renderProductSegments() {
+                productSegmentsContainer.innerHTML = ''; // Clear previous content
+                for (const category in categorizedProducts) {
+                    const sectionElement = document.createElement('section');
+                    sectionElement.className = 'mb-12';
+                    
+                    const titleElement = document.createElement('h2');
+                    titleElement.className = 'text-3xl font-bold text-christmas-red mb-6 border-b-4 border-christmas-green pb-2';
+                    titleElement.textContent = category;
+
+                    const gridElement = document.createElement('div');
+                    // Responsive grid setup: 2 on mobile, 3 on tablet/md, 4 on desktop/lg
+                    gridElement.className = 'grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6';
+
+                    categorizedProducts[category].forEach(product => {
+                        const productCard = document.createElement('div');
+                        productCard.className = 'bg-white rounded-xl shadow-xl overflow-hidden hover:shadow-2xl transition duration-300 transform hover:scale-[1.02] border-t-4 border-christmas-gold flex flex-col';
+                        
+                        // Determine the unit display for the card
+                        let unitDisplay;
+                        if (product.configType === 'weight') {
+                            unitDisplay = 'per 1 KG';
+                        } else if (product.configType === 'piece') {
+                            unitDisplay = 'per piece';
+                        } else {
+                            unitDisplay = product.unitLabel;
+                        }
+
+                        productCard.innerHTML = `
+                            <div data-id="${product.id}" class="h-40 bg-gray-100 overflow-hidden cursor-pointer image-link-item">
+                                <img src="${product.image}" onerror="this.onerror=null; this.src='${getPlaceholderUrl(product.name, product.category)}'" alt="${product.name}" class="w-full h-full object-cover transition duration-300 hover:opacity-80">
+                            </div>
+                            <div class="p-4 flex flex-col flex-grow">
+                                <h3 class="text-lg font-bold text-accent-dark mt-1">${product.name}</h3>
+                                <p class="text-sm text-gray-600">${unitDisplay}</p>
+                                <p class="text-2xl font-extrabold text-christmas-red my-2 flex-grow">₹${product.basePrice.toLocaleString('en-IN')}</p>
+                                <button data-id="${product.id}" class="config-or-add-btn w-full py-2 bg-christmas-green text-white font-bold rounded-lg hover:bg-green-700 transition duration-300 shadow-md">
+                                    ${product.configType !== 'none' ? 'Configure & Add' : 'Add to Cart'}
+                                </button>
+                            </div>
+                        `;
+                        gridElement.appendChild(productCard);
+                    });
+
+                    sectionElement.appendChild(titleElement);
+                    sectionElement.appendChild(gridElement);
+                    productSegmentsContainer.appendChild(sectionElement);
+                }
+
+                // Attach event listeners for Configuration/Add button
+                document.querySelectorAll('.config-or-add-btn').forEach(button => {
+                    button.addEventListener('click', (e) => {
+                        const productId = e.currentTarget.dataset.id;
+                        const product = findProductById(productId);
+
+                        if (product.configType !== 'none') {
+                            // Open modal for configuration
+                            openQuickView(productId);
+                        } else {
+                            // Direct add for non-configurable items (1 unit = 1 order quantity)
+                            addToCart(productId);
+                        }
+                    });
+                });
+                
+                // Attach event listeners for Quick View on image click
+                document.querySelectorAll('.image-link-item').forEach(imgDiv => {
+                    imgDiv.addEventListener('click', (e) => {
+                        const productId = e.currentTarget.dataset.id;
+                        // Opening the modal allows users to see description and configuration
+                        openQuickView(productId); 
+                    });
+                });
+            }
+            
+            // Function to handle direct adds for non-configurable items (used by legacy cards)
+            function addToCart(productId) {
+                 const product = findProductById(productId);
+                 if (!product || product.configType !== 'none') return;
+
+                 currentProduct = product;
+                 currentConfig = { quantity: 1, size: product.unitLabel, calculatedPrice: product.basePrice };
+                 // configLabel needs to be set manually for non-config items before calling the robust adder
+                 currentConfig.configLabel = product.unitLabel; 
+
+                 addToCartFromConfig();
+            }
+
+
+            // --- Cart Modal UI Interaction ---
+
+            function showCart() {
+                document.body.classList.add('cart-modal-open');
+                cartModal.classList.remove('hidden');
+            }
+
+            function hideCart() {
+                cartSidebar.classList.add('translate-x-full'); // Start slide out
+                setTimeout(() => {
+                    cartModal.classList.add('hidden');
+                    document.body.classList.remove('cart-modal-open');
+                    cartSidebar.classList.remove('translate-x-full'); // Reset for next time
+                }, 300);
+            }
+
+            // --- Event Listeners Initialization ---
+
+            cartButton.addEventListener('click', showCart);
+            closeCartButton.addEventListener('click', hideCart);
+            cartModal.addEventListener('click', (e) => {
+                // Hide cart if clicking outside the sidebar
+                if (e.target === cartModal) { hideCart(); }
+            });
+            whatsappOrderButton.addEventListener('click', generateWhatsAppOrderLink);
+            messageCloseButton.addEventListener('click', closeMessageBox);
+
+            // Quickview listeners
+            closeQuickviewButton.addEventListener('click', closeQuickView);
+            quickviewModal.addEventListener('click', (e) => {
+                // Hide quickview if clicking outside the content area
+                if (e.target === quickviewModal) { closeQuickView(); }
+            });
+
+            // Add to Cart from Config Button Listener
+            quickviewAddToCartBtn.addEventListener('click', addToCartFromConfig);
+
+
+            // Set current year in footer
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+
+            // Initial rendering
+            renderProductSegments();
+            renderCart();
+        });
+    </script>
+</body>
+</html>
+
