@@ -1,0 +1,7 @@
+robots.txt for Silver Bells Delights
+This file tells search engine crawlers which pages they can access.
+User-agent: *
+Allow all bots to crawl the entire site
+Allow: /
+Specify the location of your sitemap
+Sitemap: https://www.google.com/search?q=https://silverbellsdelights-cell.github.io/Silverbellsdelights/sitemap.xml
