@@ -1,7 +1,9 @@
-robots.txt for Silver Bells Delights
-This file tells search engine crawlers which pages they can access.
+Silver Bells Delights robots.txt
+This file provides instructions to search engine crawlers.
+Apply these rules to all web crawlers (e.g., Googlebot, Bingbot)
 User-agent: *
-Allow all bots to crawl the entire site
-Allow: /
-Specify the location of your sitemap
-Sitemap: https://www.google.com/search?q=https://silverbellsdelights-cell.github.io/Silverbellsdelights/sitemap.xml
+Disallow: (empty) means to allow access and crawl all pages on the site.
+Disallow:
+Specify the direct location of your sitemap, which helps Google discover all your pages.
+Since the sitemap is in the root of your GitHub Pages site, this is the correct URL.
+Sitemap: https://www.google.com/url?sa=E&source=gmail&q=https://silverbellsdelights-cell.github.io/Silverbellsdelights/sitemap.xml
