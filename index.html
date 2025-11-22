@@ -6,6 +6,20 @@
     <title>Silver Bells Delights | Christmas Sweets & Savouries</title>
     <!-- SEO Best Practice: Link to robots.txt -->
     <link rel="robots" href="robots.txt"> 
+    <meta name="google-site-verification" content="YOUR_GSC_VERIFICATION_CODE" />
+    <!-- 
+    1. Replace BOTH 'G-XXXXXXXXXX' instances with your actual GA4 Measurement ID.
+    2. Place this script block inside the <head> tag of your existing index.html.
+-->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  // IMPORTANT: Replace 'G-XXXXXXXXXX' below
+  gtag('config', 'G-XXXXXXXXXX');
+</script>
     <!-- Load Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Configure Tailwind CSS and Font -->
