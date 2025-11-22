@@ -26,9 +26,18 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <!-- Load Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Configure Tailwind CSS and Font -->
-    <script>
     <link rel="stylesheet" href="css/tailwind.min.css">
     <style>
+  :root {
+    --christmas-red: #C53030;
+    --christmas-green: #10743B;
+    --christmas-gold: #FDD835;
+  }
+  .bg-christmas-red { background-color: var(--christmas-red) !important; }
+  .bg-christmas-green { background-color: var(--christmas-green) !important; }
+  .text-christmas-gold { color: var(--christmas-gold) !important; }
+  .border-christmas-gold { border-color: var(--christmas-gold) !important; }
+    </style>
         /* Custom scrollbar for better aesthetics */
         .scrollbar-hide::-webkit-scrollbar {
             display: none;
