@@ -1,9 +1,9 @@
 Silver Bells Delights robots.txt
-This file provides instructions to search engine crawlers.
-Apply these rules to all web crawlers (e.g., Googlebot, Bingbot)
-User-agent: *
-The empty Disallow line means to allow access and crawl ALL pages on the site.
-Disallow:
-Specify the direct location of your sitemap.
-CRITICAL FIX: Removed the Google URL wrapper to provide the clean, direct XML link.
-Sitemap: https://www.google.com/search?q=https://silverbellsdelights-cell.github.io/Silverbellsdelights/sitemap.xml
+​This file provides instructions to search engine crawlers.
+​Apply these rules to all web crawlers (e.g., Googlebot, Bingbot)
+​User-agent: *
+​The empty Disallow line means to allow access and crawl ALL pages on the site.
+​Disallow:
+​Specify the direct location of your sitemap.
+​This URL points directly to the XML file, which is REQUIRED by search engines and AI crawlers.
+​Sitemap: https://www.google.com/url?sa=E&source=gmail&q=https://silverbellsdelights-cell.github.io/Silverbellsdelights/sitemap.xml
