@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-​<urlset xmlns="[suspicious link removed]">
-<!-- Main Index Page (Based on the canonical URL provided in your HTML) -->
-<url>
-<loc>https://silverbellsdelights-cell.github.io/Silverbellsdelights/</loc>
-<lastmod>2025-11-27</lastmod>
-<changefreq>weekly</changefreq>
-<priority>1.0</priority>
-</url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://silverbellsdelights-cell.github.io/Silverbellsdelights/</loc>
+    <lastmod>2025-12-04</lastmod>
+    <priority>1.0</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <!-- Add all other pages here -->
+  <url>
+    <loc>https://silverbellsdelights-cell.github.io/Silverbellsdelights/products.html</loc>
+    <lastmod>2025-12-04</lastmod>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+  </url>
 </urlset>
