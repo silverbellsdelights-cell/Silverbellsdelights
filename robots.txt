@@ -1,8 +1,9 @@
-robots.txt for Silver Bells Delights (GitHub Pages)
-​Allow all user agents (search engine bots) to crawl the site,
-​including general web crawlers used by AI agents/GPTs.
-​User-agent: *
+# robots.txt for Silver Bells Delights (GitHub Pages)
+# Allow all user agents (search engine bots) to crawl the site,
+# including general web crawlers used by AI agents/GPTs.
+
+User-agent: *
 Allow: /
-​Specify the location of the Sitemap file.
-​IMPORTANT: This must be a direct link to the sitemap file.
-​Sitemap: https://www.google.com/search?q=https://silverbellsdelights-cell.github.io/Silverbellsdelights/sitemap.xml
+
+# Sitemap location - must be a direct link to the actual sitemap file
+Sitemap: https://silverbellsdelights-cell.github.io/Silverbellsdelights/sitemap.xml
