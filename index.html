@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Silver Bells Delights | Easter Specials & Festive Sweets</title>
+    <!-- SEO Best Practice: Link to robots.txt -->
+    <link rel="robots" href="robots.txt"> 
+    <meta name="google-site-verification" content="iq2Rm9xKEe024t48MzEa8z4ntXMAQSuraaDaeLCY7zM"/>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-S173QF32BV"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-S173QF32BV');
+    </script>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-M24K4L4C');</script>
+    <!-- End Google Tag Manager -->
+
+    <!-- Start Being -->
+    <meta name="msvalidate.01" content="BFDF33121414649C5EFA7A82C4AF1476" />
+    <!-- End Bing -->
+
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Configure Tailwind CSS and Font -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brand-red': '#C53030', 
+                        'brand-green': '#10743B', 
+                        'brand-gold': '#FDD835', 
+                        'accent-dark': '#3D0000',
+                        'easter-pink': '#FFD1DC',
+                        'easter-blue': '#AEC6CF',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom scrollbar for better aesthetics */
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        /* Style for floating action buttons */
+        .floating-action-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 50;
+        }
+        .fab {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 56px;
+            height: 56px;
+            margin-top: 10px;
+            border-radius: 50%;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s, background-color 0.3s;
+        }
+        .fab:hover {
+            transform: scale(1.1);
+        }
+        /* Cart Sidebar Animation */
+        .cart-modal-open .translate-x-full {
+            transform: translateX(0);
+        }
+        /* Storefront transition */
+        #product-segments {
+            transition: opacity 0.3s ease-in-out;
+        }
+        
+        .storefront-btn {
+            white-space: nowrap;
+            padding: 0.5rem 1.25rem;
+            border-radius: 9999px;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+        .storefront-btn.active {
+            background-color: '#FDD835'; /* brand-gold */
+            color: '#3D0000';
+            border-color: '#FDD835';
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .storefront-btn.inactive {
+            background-color: #f3f4f6;
+            color: #4b5563;
+        }
+        .storefront-btn.inactive:hover {
+            background-color: #e5e7eb;
+        }
+    </style>
+    <link rel="canonical" href="https://silverbellsdelights-cell.github.io/Silverbellsdelights/" />
+</head>
+<body class="bg-gray-50 font-sans min-h-screen flex flex-col">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M24K4L4C"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    
+    <!-- Header & Navigation -->
+    <header class="bg-brand-red shadow-lg sticky top-0 z-20">
+        <div class="container mx-auto p-4 flex justify-between items-center max-w-7xl">
+            <h1 class="text-2xl sm:text-3xl font-extrabold text-white tracking-wider cursor-pointer" onclick="switchStorefront('All')">
+                <span class="text-brand-gold">Silver Bells</span> Delights
+            </h1>
+            <button id="cart-button" class="relative p-2 bg-brand-green hover:bg-green-700 text-white rounded-full shadow-md transition duration-300 transform hover:scale-105" aria-label="View Cart">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6">
+                    <circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                </svg>
+                <span id="cart-count" class="absolute top-0 right-0 inline-flex items-center justify-center w-5 h-5 text-xs font-bold leading-none text-brand-red transform translate-x-1/2 -translate-y-1/2 bg-white rounded-full border-2 border-brand-gold">0</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="container mx-auto p-4 flex-grow max-w-7xl">
+        
+        <!-- Hero Section -->
+        <section id="hero-banner" class="mb-8 bg-brand-green p-6 sm:p-10 rounded-xl shadow-2xl border-4 border-brand-gold text-center transition-all duration-500">
+            <h2 id="hero-title" class="text-3xl sm:text-4xl font-extrabold text-white mb-2">
+                Hyderabad's Homemade Festive Tradition!
+            </h2>
+            <p id="hero-subtitle" class="text-lg text-gray-200 mb-4">
+                Freshly made with love by Isabel Besterwitch D'Cruz.
+            </p>
+            <div class="inline-block px-6 py-2 bg-brand-gold text-accent-dark font-bold rounded-full shadow-md text-sm sm:text-base transform hover:scale-105 transition duration-300">
+                <p>FREE Home Delivery for 3KM Radius!</p>
+            </div>
+        </section>
+
+        <!-- Storefront Switcher -->
+        <div class="flex justify-start sm:justify-center space-x-3 mb-8 overflow-x-auto pb-4 scrollbar-hide px-2">
+            <button onclick="switchStorefront('All')" id="btn-All" class="storefront-btn bg-brand-gold text-accent-dark border-brand-gold shadow-md">🌟 All Menu</button>
+            <button onclick="switchStorefront('Easter')" id="btn-Easter" class="storefront-btn inactive">🐰 Easter Specials</button>
+            <button onclick="switchStorefront('Christmas')" id="btn-Christmas" class="storefront-btn inactive">🎄 Christmas Sweets</button>
+            <button onclick="switchStorefront('Savouries')" id="btn-Savouries" class="storefront-btn inactive">🥨 Savouries & Meat</button>
+        </div>
+
+        <!-- Product Segments -->
+        <div id="product-segments" class="opacity-100">
+            <!-- Product categories and grids will be injected here by JavaScript -->
+        </div>
+
+    </main>
+    
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-6 mt-10">
+        <div class="container mx-auto text-center max-w-7xl">
+            <p>&copy; <span id="current-year"></span> Silver Bells Delights. Contact Isabel Besterwitch D'Cruz.</p>
+            <p class="text-sm text-gray-400 mt-1">Contact for orders: 9391339396 / 7981042464</p>
+        </div>
+    </footer>
+
+    <!-- Floating Action Buttons -->
+    <div class="floating-action-container flex flex-col items-end">
+        <a href="https://wa.me/919391339396?text=Hello%20Isabel,%20I%20saw%20your%20menu%20and%20would%20like%20to%20place%20an%20order." target="_blank" class="fab bg-brand-green text-white" title="Order on WhatsApp">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2c-5.46 0-9.9 4.44-9.9 9.9 0 1.75.52 3.42 1.49 4.87l-1.55 5.67 5.8-1.51c1.42.78 3.02 1.21 4.16 1.21.03 0 .06 0 .09 0 5.46 0 9.9-4.44 9.9-9.9.01-5.46-4.43-9.9-9.9-9.9zm4.78 13.56c-.23.63-1.07 1.07-1.55 1.13-.5.06-.94.03-1.4-.13-.46-.15-1.07-.3-2.38-1.01-1.63-.9-2.65-2.42-2.85-2.71-.2-.3-.18-.55 0-.82.17-.23.37-.47.59-.72.2-.24.2-.42.3-.64.08-.2.04-.37-.02-.52-.08-.16-.54-1.3-.74-1.78-.2-.47-.41-.4-.54-.42-.14-.02-.29-.02-.45-.02h-.42c-.15 0-.41.05-.63.31-.22.25-.85.83-.85 2.01 0 1.18.87 2.33.99 2.49.12.16 1.71 2.62 4.14 3.65 2.43 1.02 2.91.87 3.45.81.54-.06 1.07-.44 1.23-.74.16-.3.16-.56.11-.74-.06-.18-.23-.29-.48-.41z"/></svg>
+        </a>
+        <a href="tel:9391339396" class="fab bg-brand-red text-white" title="Call Now">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-4.72-4.72 19.79 19.79 0 0 1-3.07-8.63A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+            </svg>
+        </a>
+    </div>
+
+    <!-- Cart Modal (Sidebar) -->
+    <div id="cart-modal" class="fixed inset-0 bg-gray-900 bg-opacity-75 z-30 hidden" aria-modal="true" role="dialog">
+        <div class="fixed right-0 top-0 h-full w-full sm:w-96 bg-white shadow-2xl p-6 flex flex-col transform transition-transform duration-300 translate-x-full" id="cart-sidebar">
+            <div class="flex justify-between items-center pb-4 border-b border-gray-200">
+                <h3 class="text-2xl font-bold text-accent-dark">Your Order</h3>
+                <button id="close-cart-button" class="text-gray-500 hover:text-gray-900 p-2 rounded-full hover:bg-gray-100" aria-label="Close Cart">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><path d="M18 6L6 18M6 6l12 12"></path></svg>
+                </button>
+            </div>
+            <div id="cart-items" class="flex-grow my-4 overflow-y-auto scrollbar-hide">
+                <p id="empty-cart-message" class="text-gray-500 text-center py-8">Your cart is empty. Add some festive joy!</p>
+            </div>
+            <div id="order-summary" class="pt-4 border-t border-gray-200">
+                <div class="flex justify-between items-center mb-4">
+                    <span class="text-xl font-semibold">Total:</span>
+                    <span id="cart-total" class="text-2xl font-bold text-brand-red">₹0</span>
+                </div>
+                <button id="whatsapp-order-button" class="w-full py-3 bg-brand-green text-white font-bold rounded-lg shadow-lg hover:bg-green-800 transition duration-300 flex items-center justify-center disabled:opacity-50" disabled>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 w-5 h-5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                    Place Order via WhatsApp
+                </button>
+                <p class="text-xs text-center text-gray-500 mt-2">
+                    (Order sent to Isabel D'Cruz: 9391339396)
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Product Configuration Modal (Replaces Quick View) -->
+    <div id="quickview-modal" class="fixed inset-0 bg-gray-900 bg-opacity-75 z-40 hidden flex items-center justify-center p-4" aria-modal="true" role="dialog">
+        <div class="bg-white rounded-xl shadow-2xl max-w-lg w-full max-h-[90vh] overflow-y-auto transform scale-0 transition-transform duration-300 ease-out" id="quickview-content">
+            <div class="p-6">
+                <div class="flex justify-between items-start border-b pb-3 mb-4">
+                    <h3 id="quickview-title" class="text-2xl font-bold text-accent-dark">Item Details</h3>
+                    <button id="close-quickview-button" class="text-gray-500 hover:text-gray-900 p-2 rounded-full hover:bg-gray-100" aria-label="Close details">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><path d="M18 6L6 18M6 6l12 12"></path></svg>
+                    </button>
+                </div>
+                <img id="quickview-image" class="w-full max-h-56 object-cover rounded-lg mb-4 border border-gray-200" src="" alt="Product Image" onerror="this.onerror=null; this.src='images/no_image_available.jpg';">
+                
+                <p id="quickview-description" class="text-gray-600 mb-4"></p>
+                <div id="config-options-container" class="mb-6 p-4 bg-gray-50 rounded-lg border border-gray-200">
+                    <!-- Dynamic configuration injected here -->
+                </div>
+
+                <div class="flex justify-between items-center">
+                    <div class="text-left">
+                        <span class="text-lg text-gray-600">Total Price:</span>
+                        <span id="quickview-total-price" class="text-3xl font-extrabold text-brand-red block">₹0</span>
+                    </div>
+                    <button id="quickview-add-to-cart-btn" data-id="" class="py-3 px-6 bg-brand-red text-white font-bold rounded-lg hover:bg-red-700 transition duration-300 shadow-md">
+                        Add to Order
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Custom Alert/Message Box -->
+    <div id="message-box" class="fixed inset-0 flex items-center justify-center z-50 hidden bg-black bg-opacity-50">
+        <div class="bg-white p-6 rounded-xl shadow-2xl border-2 border-brand-gold transform scale-0 transition-transform duration-300 ease-out max-w-sm w-full mx-4" id="message-content">
+            <p id="message-text" class="text-lg font-semibold text-accent-dark text-center"></p>
+            <button id="message-close-button" class="mt-4 w-full py-3 bg-brand-green text-white font-bold rounded-lg hover:bg-green-700 transition-colors">OK</button>
+        </div>
+    </div>
+
+    <script>
+        // Storefront State
+        let currentActiveStorefront = 'All';
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const WHATSAPP_NUMBER = '919391339396'; 
+            const APP_NAME = 'Silver Bells Delights';
+
+            let currentProduct = null;
+            let currentConfig = {
+                quantity: 1, 
+                size: '1 KG', 
+                calculatedPrice: 0,
+            };
+
+            // Enhanced Placeholder Logic for new categories
+            function getPlaceholderUrl(name, category) {
+                const text = name.replace(/ /g, '+');
+                let color, bgColor;
+
+                if (category === 'Cakes') { bgColor = 'C53030'; color = 'FFFFFF'; }
+                else if (category === 'Sweets') { bgColor = 'FDD835'; color = '3D0000'; }
+                else if (category === 'Savouries') { bgColor = '10743B'; color = 'FFFFFF'; }
+                else if (category === 'Easter Specials') { bgColor = 'FFD1DC'; color = '3D0000'; } // Easter Pink
+                else { bgColor = '444444'; color = 'FFFFFF'; } 
+                
+                return `https://placehold.co/300x200/${bgColor}/${color}?text=${text}`;
+            }
+
+            const USE_PLACEHOLDERS = false; 
+
+            // Consolidated Product Data (Added Easter Menu)
+            const rawProducts = [
+                // EASTER SPECIALS
+                { id: 'hot_cross_buns', name: 'Hot Cross Buns', category: 'Easter Specials', basePrice: 23, configType: 'piece', unitLabel: 'per piece', description: 'Freshly baked traditional Hot Cross Buns.', image_file: 'images/hot_cross_buns.webp' },
+                { id: 'easter_egg_small', name: 'Small Easter Egg', category: 'Easter Specials', basePrice: 95, configType: 'piece', unitLabel: 'per piece', description: 'Available in Marzipan or Chocolate. Perfect bite-sized treat.', image_file: 'images/easter_egg_small.webp' },
+                { id: 'easter_egg_medium', name: 'Medium Easter Egg', category: 'Easter Specials', basePrice: 160, configType: 'piece', unitLabel: 'per piece', description: 'Available in Marzipan or Chocolate. The classic gift size.', image_file: 'images/easter_egg_medium.webp' },
+                { id: 'easter_egg_large', name: 'Large Easter Egg', category: 'Easter Specials', basePrice: 200, configType: 'piece', unitLabel: 'per piece', description: 'Available in Marzipan or Chocolate. For the true sweet tooth.', image_file: 'images/easter_egg_large.webp' },
+                { id: 'easter_egg_xl', name: 'Extra Large Easter Egg', category: 'Easter Specials', basePrice: 265, configType: 'piece', unitLabel: 'per piece', description: 'Available in Marzipan or Chocolate. A magnificent centerpiece.', image_file: 'images/easter_egg_xl.webp' },
+                { id: 'easter_basket', name: 'Basket of Eggs', category: 'Easter Specials', basePrice: 750, configType: 'piece', unitLabel: 'per basket', description: 'Includes: 2 Small Eggs, 2 Medium Eggs, 1 Large Egg, and 3 Shapes.', image_file: 'images/easter_basket.webp' },
+
+                // CHRISTMAS & CLASSICS
+                { id: 'rum_cake', name: 'Rum Cake', category: 'Cakes', basePrice: 750, configType: 'weight', unitLabel: 'per KG', description: 'Rich, moist cake soaked in rum—a traditional Christmas favorite.', image_file: 'images/rum_cake.webp' },
+                { id: 'wine_cake', name: 'Wine Cake', category: 'Cakes', basePrice: 700, configType: 'weight', unitLabel: 'per KG', description: 'A delicate cake baked with fine wine, perfect for the festive table.', image_file: 'images/wine_cake.webp' },
+                { id: 'ribbon_cake', name: 'Ribbon Cake', category: 'Cakes', basePrice: 600, configType: 'weight', unitLabel: 'per KG', description: 'Classic layered ribbon cake with light, colorful icing.', image_file: 'images/ribbon cake.webp' },
+                { id: 'rose_cookies', name: 'Rose Cookies', category: 'Sweets', basePrice: 10, configType: 'piece', unitLabel: 'per piece', description: 'Crispy, flower-shaped deep-fried cookies (Achappam).', image_file: 'images/rose_cookies.webp' },
+                { id: 'kal_kals', name: 'Jaggery Kal Kals', category: 'Sweets', basePrice: 400, unitLabel: 'per 1 KG', configType: 'none', description: 'Traditional Christmas sweet shell-shaped pastries coated in jaggery syrup.', image_file: 'images/jaggery_kal_kals1.webp' },
+                { id: 'coconut_puffs', name: 'Sweet Coconut Puffs', category: 'Sweets', basePrice: 450, unitLabel: 'per 1 KG', configType: 'none', description: 'Flaky puffs filled with sweet, grated coconut.', image_file: 'images/coconut_puffs1.webp' },
+                { id: 'adrasams', name: 'Adrasams', category: 'Sweets', basePrice: 420, unitLabel: 'per 1 KG', configType: 'none', description: 'South Indian festive sweet made from rice flour and jaggery.', image_file: 'images/adrasams_1.webp' },
+                { id: 'guava_cheese', name: 'Guava Cheese', category: 'Sweets', basePrice: 860, unitLabel: 'per 1 KG', configType: 'none', description: 'Firm, translucent confection made from fresh guava fruit pulp.', image_file: 'images/guava_cheese1.webp' },
+                { id: 'sweet_biscuit', name: 'Sweet Biscuit', category: 'Sweets', basePrice: 450, unitLabel: 'per 1 KG', configType: 'none', description: 'Simple, sweet homemade biscuits.', image_file: 'images/sweet_biscuits.webp' },
+
+                // SAVOURIES & MEAT
+                { id: 'masala_murukulu', name: 'Masala Murukulu', category: 'Savouries', basePrice: 450, configType: 'weight', unitLabel: 'per KG', description: 'Spicy, crunchy spiral snack with aromatic spices.', image_file: 'images/masala_murukulus.webp' },
+                { id: 'masala_murukulu_stick', name: 'Masala Murukulu Stick', category: 'Savouries', basePrice: 450, configType: 'weight', unitLabel: 'per KG', description: 'Crispy stick-shaped version of the spicy murukulu.', image_file: 'images/masala_murukulu_stick.webp' }, 
+                { id: 'sakinula', name: 'Sakinalu', category: 'Savouries', basePrice: 480, configType: 'weight', unitLabel: 'per KG', description: 'A traditional Telangana delicacy, thin crispy spirals.', image_file: 'images/sakinula.webp' },
+                { id: 'palli_murukulu_papad', name: 'Palli Murukulu Papad', category: 'Savouries', basePrice: 480, configType: 'weight', unitLabel: 'per KG', description: 'Crunchy snack combined with groundnuts (palli).', image_file: 'images/palli_murukulu_papad.webp' }, 
+                { id: 'masala_murukulu_small', name: 'Masala Murukulu Small', category: 'Savouries', basePrice: 450, configType: 'weight', unitLabel: 'per KG', description: 'Smaller pieces of the groundnut murukulu.', image_file: 'images/masala_murukulu_small.webp' }, 
+                { id: 'salted_beef', name: 'Salted Beef (Raw)', category: 'Meat', basePrice: 750, unitLabel: 'per 1 KG', configType: 'none', description: 'High-quality raw salted beef, ready for curing or cooking.', image_file: 'images/salted_beef.webp' },
+            ];
+
+            const products = rawProducts.map(p => ({
+                ...p,
+                image: USE_PLACEHOLDERS ? getPlaceholderUrl(p.name, p.category) : p.image_file,
+                placeholderFallback: getPlaceholderUrl(p.name, p.category)
+            }));
+            
+            const categorizedProducts = products.reduce((acc, product) => {
+                acc[product.category] = acc[product.category] || [];
+                acc[product.category].push(product);
+                return acc;
+            }, {});
+
+            let cart = []; 
+
+            // --- DOM Elements ---
+            const productSegmentsContainer = document.getElementById('product-segments');
+            const cartCountElement = document.getElementById('cart-count');
+            const cartItemsContainer = document.getElementById('cart-items');
+            const cartTotalElement = document.getElementById('cart-total');
+            const emptyCartMessage = document.getElementById('empty-cart-message');
+            const whatsappOrderButton = document.getElementById('whatsapp-order-button');
+            
+            // UI Elements
+            const quickviewModal = document.getElementById('quickview-modal');
+            const quickviewContent = document.getElementById('quickview-content');
+            const configOptionsContainer = document.getElementById('config-options-container');
+            const quickviewTotalPrice = document.getElementById('quickview-total-price');
+            
+            const messageBox = document.getElementById('message-box');
+            const messageContent = document.getElementById('message-content');
+            const messageText = document.getElementById('message-text');
+
+            // --- Utility Functions ---
+            window.showMessage = function(text) {
+                messageText.textContent = text;
+                messageBox.classList.remove('hidden');
+                setTimeout(() => messageContent.classList.add('scale-100'), 10);
+            }
+
+            window.closeMessageBox = function() {
+                messageContent.classList.remove('scale-100');
+                setTimeout(() => messageBox.classList.add('hidden'), 300);
+            }
+            
+            function findProductById(id) { return products.find(p => p.id === id); }
+            
+            function calculatePrice() {
+                if (!currentProduct) return 0;
+                const basePrice = currentProduct.basePrice;
+
+                if (currentProduct.configType === 'weight') {
+                    if (currentConfig.size === '1/2 KG') {
+                        currentConfig.calculatedPrice = basePrice / 2;
+                        currentConfig.configLabel = `1 x 1/2 KG`;
+                    } else {
+                        currentConfig.calculatedPrice = basePrice;
+                        currentConfig.configLabel = `1 x 1 KG`;
+                    }
+                    currentConfig.quantity = 1;
+                } else if (currentProduct.configType === 'piece') {
+                    currentConfig.calculatedPrice = basePrice * currentConfig.quantity;
+                    currentConfig.configLabel = `${currentConfig.quantity} x piece`;
+                } else {
+                    currentConfig.calculatedPrice = basePrice;
+                    currentConfig.configLabel = currentProduct.unitLabel;
+                    currentConfig.quantity = 1;
+                }
+                quickviewTotalPrice.textContent = `₹${currentConfig.calculatedPrice.toLocaleString('en-IN')}`;
+            }
+
+            // --- Storefront Switcher Logic ---
+            window.switchStorefront = function(storefrontName) {
+                currentActiveStorefront = storefrontName;
+                
+                // Update Button UI
+                ['All', 'Easter', 'Christmas', 'Savouries'].forEach(name => {
+                    const btn = document.getElementById(`btn-${name}`);
+                    if(name === storefrontName) {
+                        btn.classList.remove('inactive');
+                        btn.classList.add('bg-brand-gold', 'text-accent-dark', 'border-brand-gold', 'shadow-md');
+                    } else {
+                        btn.classList.add('inactive');
+                        btn.classList.remove('bg-brand-gold', 'text-accent-dark', 'border-brand-gold', 'shadow-md');
+                    }
+                });
+
+                // Update Hero Banner contextually
+                const heroBanner = document.getElementById('hero-banner');
+                const heroTitle = document.getElementById('hero-title');
+                
+                if(storefrontName === 'Easter') {
+                    heroBanner.className = 'mb-8 bg-easter-pink p-6 sm:p-10 rounded-xl shadow-2xl border-4 border-easter-blue text-center transition-all duration-500';
+                    heroTitle.innerHTML = "🐰 Hop into Easter Delights! 🥚";
+                    heroTitle.className = "text-3xl sm:text-4xl font-extrabold text-accent-dark mb-2";
+                    document.getElementById('hero-subtitle').className = "text-lg text-accent-dark mb-4";
+                } else {
+                    heroBanner.className = 'mb-8 bg-brand-green p-6 sm:p-10 rounded-xl shadow-2xl border-4 border-brand-gold text-center transition-all duration-500';
+                    heroTitle.innerHTML = "Hyderabad's Homemade Festive Tradition!";
+                    heroTitle.className = "text-3xl sm:text-4xl font-extrabold text-white mb-2";
+                    document.getElementById('hero-subtitle').className = "text-lg text-gray-200 mb-4";
+                }
+
+                // Smooth render transition
+                productSegmentsContainer.style.opacity = '0';
+                setTimeout(() => {
+                    renderProductSegments(storefrontName);
+                    productSegmentsContainer.style.opacity = '1';
+                }, 300);
+            }
+
+            window.openQuickView = function(productId) {
+                const product = findProductById(productId);
+                if (!product) return;
+                currentProduct = product;
+                
+                // Smart defaults based on category
+                if (product.configType === 'weight') {
+                    currentConfig = { quantity: 1, size: '1 KG', calculatedPrice: product.basePrice };
+                } else if (product.configType === 'piece') {
+                    // Easter items and Basket default to 1 piece. Cookies default to 10.
+                    const defaultQty = (product.category === 'Easter Specials') ? 1 : 10;
+                    currentConfig = { quantity: defaultQty, size: '1 piece', calculatedPrice: product.basePrice * defaultQty };
+                } else {
+                    currentConfig = { quantity: 1, size: product.unitLabel, calculatedPrice: product.basePrice };
+                }
+                
+                document.getElementById('quickview-title').textContent = product.name;
+                document.getElementById('quickview-image').src = product.image;
+                document.getElementById('quickview-image').onerror = function() { this.onerror=null; this.src=product.placeholderFallback; };
+                document.getElementById('quickview-description').textContent = `${product.description} Base Price: ₹${product.basePrice} ${product.unitLabel}`;
+                document.getElementById('quickview-add-to-cart-btn').dataset.id = product.id;
+
+                renderConfigOptions();
+                calculatePrice();
+
+                quickviewModal.classList.remove('hidden');
+                setTimeout(() => quickviewContent.classList.add('scale-100'), 10);
+            }
+
+            window.closeQuickView = function() {
+                quickviewContent.classList.remove('scale-100');
+                setTimeout(() => quickviewModal.classList.add('hidden'), 300);
+            }
+
+            function renderConfigOptions() {
+                const product = currentProduct;
+                let configHtml = '';
+
+                if (product.configType === 'weight') {
+                    configHtml = `
+                        <p class="font-semibold text-gray-700 mb-2">Select Weight:</p>
+                        <select id="weight-selector" onchange="window.handleWeightChange(event)"
+                            class="w-full p-3 border border-gray-300 rounded-lg focus:ring-brand-red focus:border-brand-red transition duration-150">
+                            <option value="1 KG" ${currentConfig.size === '1 KG' ? 'selected' : ''}>1 KG (₹${product.basePrice})</option>
+                            <option value="1/2 KG" ${currentConfig.size === '1/2 KG' ? 'selected' : ''}>1/2 KG (₹${product.basePrice / 2})</option>
+                        </select>
+                    `;
+                } else if (product.configType === 'piece') {
+                    configHtml = `
+                        <p class="font-semibold text-gray-700 mb-2">Select Quantity (@ ₹${product.basePrice} each):</p>
+                        <div class="flex items-center justify-center space-x-4">
+                            <button onclick="window.updateQuantity(-1)" 
+                                class="w-10 h-10 bg-brand-red text-white text-xl font-bold rounded-full hover:bg-red-700 transition duration-150 shadow-md flex items-center justify-center disabled:opacity-50"
+                                ${currentConfig.quantity <= 1 ? 'disabled' : ''}>-</button>
+                            <span id="piece-count" class="text-3xl font-extrabold text-accent-dark w-12 text-center">${currentConfig.quantity}</span>
+                            <button onclick="window.updateQuantity(1)" 
+                                class="w-10 h-10 bg-brand-green text-white text-xl font-bold rounded-full hover:bg-green-700 transition duration-150 shadow-md flex items-center justify-center">+</button>
+                        </div>
+                    `;
+                } else {
+                    configHtml = `
+                        <p class="font-semibold text-gray-700 mb-1">Standard Item</p>
+                        <p class="text-lg text-brand-red">${product.unitLabel} - ₹${product.basePrice.toLocaleString('en-IN')}</p>
+                    `;
+                }
+                configOptionsContainer.innerHTML = configHtml;
+            }
+
+            window.handleWeightChange = (event) => {
+                currentConfig.size = event.target.value;
+                calculatePrice();
+            };
+
+            window.updateQuantity = (delta) => {
+                const newQuantity = currentConfig.quantity + delta;
+                if (newQuantity >= 1) {
+                    currentConfig.quantity = newQuantity;
+                    document.getElementById('piece-count').textContent = newQuantity;
+                    renderConfigOptions(); 
+                    calculatePrice();
+                }
+            };
+
+            // --- Cart Logic ---
+            function updateCartCount() {
+                cartCountElement.textContent = cart.reduce((sum, item) => sum + item.orderQuantity, 0);
+            }
+
+            function updateCartTotal() {
+                const total = cart.reduce((sum, item) => sum + item.totalPrice, 0);
+                cartTotalElement.textContent = `₹${total.toLocaleString('en-IN')}`;
+                whatsappOrderButton.disabled = cart.length === 0;
+            }
+            
+            window.addToCartFromConfig = function() {
+                if (!currentProduct) return;
+                const uniqueId = `${currentProduct.id}-${currentConfig.size}-${currentConfig.quantity}`;
+                const existingItem = cart.find(item => item.uniqueId === uniqueId);
+
+                if (existingItem) {
+                    existingItem.orderQuantity += 1;
+                    existingItem.totalPrice = existingItem.unitPrice * existingItem.orderQuantity;
+                } else {
+                    cart.push({
+                        uniqueId: uniqueId, id: currentProduct.id, name: currentProduct.name,
+                        configLabel: currentConfig.configLabel, unitPrice: currentConfig.calculatedPrice, 
+                        totalPrice: currentConfig.calculatedPrice, orderQuantity: 1 
+                    });
+                }
+                showMessage(`${currentProduct.name} added to your basket!`);
+                renderCart();
+                closeQuickView();
+            }
+
+            function updateCartItemOrderQuantity(uniqueId, newOrderQuantity) {
+                const itemIndex = cart.findIndex(item => item.uniqueId === uniqueId);
+                if (newOrderQuantity <= 0) {
+                    cart.splice(itemIndex, 1);
+                } else {
+                    cart[itemIndex].orderQuantity = newOrderQuantity;
+                    cart[itemIndex].totalPrice = cart[itemIndex].unitPrice * newOrderQuantity;
+                }
+                renderCart();
+            }
+
+            function renderCart() {
+                cartItemsContainer.innerHTML = '';
+                if (cart.length === 0) {
+                    emptyCartMessage.classList.remove('hidden');
+                    updateCartCount(); updateCartTotal(); return;
+                }
+                emptyCartMessage.classList.add('hidden');
+
+                cart.forEach(item => {
+                    const itemElement = document.createElement('div');
+                    itemElement.className = 'flex items-start justify-between p-3 border-b last:border-b-0';
+                    itemElement.innerHTML = `
+                        <div class="flex-1 pr-2">
+                            <p class="font-semibold text-accent-dark">${item.name}</p>
+                            <p class="text-sm text-gray-500">${item.configLabel}</p>
+                            <p class="text-sm text-gray-600 font-bold">₹${item.unitPrice.toLocaleString('en-IN')} each</p>
+                        </div>
+                        <div class="flex flex-col items-end">
+                            <div class="flex items-center space-x-2 mb-2">
+                                <button data-id="${item.uniqueId}" data-action="decrease" class="p-1 w-6 h-6 bg-gray-200 rounded-md hover:bg-gray-300 text-accent-dark flex items-center justify-center">-</button>
+                                <span class="w-6 text-center font-bold">${item.orderQuantity}</span>
+                                <button data-id="${item.uniqueId}" data-action="increase" class="p-1 w-6 h-6 bg-gray-200 rounded-md hover:bg-gray-300 text-accent-dark flex items-center justify-center">+</button>
+                            </div>
+                            <span class="text-lg font-extrabold text-brand-red">₹${item.totalPrice.toLocaleString('en-IN')}</span>
+                        </div>
+                    `;
+                    cartItemsContainer.appendChild(itemElement);
+                });
+
+                cartItemsContainer.querySelectorAll('button[data-action]').forEach(button => {
+                    button.addEventListener('click', (e) => {
+                        const uniqueId = e.currentTarget.dataset.id;
+                        const action = e.currentTarget.dataset.action;
+                        const item = cart.find(i => i.uniqueId === uniqueId);
+                        if (!item) return;
+                        if (action === 'increase') updateCartItemOrderQuantity(uniqueId, item.orderQuantity + 1);
+                        else if (action === 'decrease') updateCartItemOrderQuantity(uniqueId, item.orderQuantity - 1);
+                    });
+                });
+                updateCartCount(); updateCartTotal();
+            }
+
+            function generateWhatsAppOrderLink() {
+                if (cart.length === 0) return;
+                const total = cart.reduce((sum, item) => sum + item.totalPrice, 0);
+                let message = `*🌟 ${APP_NAME} - New Order 🌟*\n\n*Items Ordered:*\n`;
+
+                cart.forEach(item => { message += `* ${item.name} (${item.configLabel}) x ${item.orderQuantity} = ₹${item.totalPrice.toLocaleString('en-IN')}\n`; });
+                message += `\n*Total Order Value: ₹${total.toLocaleString('en-IN')}*\n\n--- Please Fill Order Details Below ---\n1. Name:\n2. Phone:\n3. Delivery/Pickup (Specify):\n4. Full Address (If Delivery):\n`;
+                
+                window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`, '_blank');
+                hideCart();
+            }
+
+            // --- Rendering Functions ---
+            function renderProductSegments(filter = 'All') {
+                productSegmentsContainer.innerHTML = ''; 
+                for (const category in categorizedProducts) {
+                    
+                    // Filter Logic
+                    if(filter === 'Easter' && category !== 'Easter Specials') continue;
+                    if(filter === 'Christmas' && (category === 'Easter Specials' || category === 'Savouries' || category === 'Meat')) continue;
+                    if(filter === 'Savouries' && (category === 'Easter Specials' || category === 'Cakes' || category === 'Sweets')) continue;
+
+                    const sectionElement = document.createElement('section');
+                    sectionElement.className = 'mb-12';
+                    
+                    let borderColor = category === 'Easter Specials' ? 'border-easter-pink' : 'border-brand-green';
+                    let textColor = category === 'Easter Specials' ? 'text-accent-dark' : 'text-brand-red';
+
+                    sectionElement.innerHTML = `<h2 class="text-3xl font-bold ${textColor} mb-6 border-b-4 ${borderColor} pb-2">${category}</h2>`;
+
+                    const gridElement = document.createElement('div');
+                    gridElement.className = 'grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6';
+
+                    categorizedProducts[category].forEach(product => {
+                        const productCard = document.createElement('div');
+                        let cardHighlight = product.category === 'Easter Specials' ? 'border-easter-blue' : 'border-brand-gold';
+                        productCard.className = `bg-white rounded-xl shadow-xl overflow-hidden hover:shadow-2xl transition duration-300 transform hover:scale-[1.02] border-t-4 ${cardHighlight} flex flex-col`;
+                        
+                        let unitDisplay = product.configType === 'weight' ? 'per 1 KG' : (product.configType === 'piece' ? 'per piece' : product.unitLabel);
+
+                        productCard.innerHTML = `
+                            <div onclick="openQuickView('${product.id}')" class="h-40 bg-gray-100 overflow-hidden cursor-pointer">
+                                <img src="${product.image}" onerror="this.onerror=null; this.src='${product.placeholderFallback}'" alt="${product.name}" class="w-full h-full object-cover transition duration-300 hover:opacity-80">
+                            </div>
+                            <div class="p-4 flex flex-col flex-grow">
+                                <h3 class="text-lg font-bold text-accent-dark mt-1">${product.name}</h3>
+                                <p class="text-sm text-gray-600">${unitDisplay}</p>
+                                <p class="text-2xl font-extrabold text-brand-red my-2 flex-grow">₹${product.basePrice.toLocaleString('en-IN')}</p>
+                                <button onclick="${product.configType !== 'none' ? `openQuickView('${product.id}')` : `directAddToCart('${product.id}')`}" class="w-full py-2 bg-brand-green text-white font-bold rounded-lg hover:bg-green-700 transition duration-300 shadow-md">
+                                    ${product.configType !== 'none' ? 'Configure & Add' : 'Add to Cart'}
+                                </button>
+                            </div>
+                        `;
+                        gridElement.appendChild(productCard);
+                    });
+
+                    sectionElement.appendChild(gridElement);
+                    productSegmentsContainer.appendChild(sectionElement);
+                }
+            }
+            
+            window.directAddToCart = function(productId) {
+                 const product = findProductById(productId);
+                 if (!product || product.configType !== 'none') return;
+                 currentProduct = product;
+                 currentConfig = { quantity: 1, size: product.unitLabel, calculatedPrice: product.basePrice, configLabel: product.unitLabel };
+                 addToCartFromConfig();
+            }
+
+            // --- Cart Modal UI Interaction ---
+            const cartModal = document.getElementById('cart-modal');
+            const cartSidebar = document.getElementById('cart-sidebar');
+
+            window.showCart = function() {
+                document.body.classList.add('cart-modal-open');
+                cartModal.classList.remove('hidden');
+            }
+
+            window.hideCart = function() {
+                cartSidebar.classList.add('translate-x-full'); 
+                setTimeout(() => {
+                    cartModal.classList.add('hidden');
+                    document.body.classList.remove('cart-modal-open');
+                    cartSidebar.classList.remove('translate-x-full'); 
+                }, 300);
+            }
+
+            // Initialization
+            document.getElementById('cart-button').addEventListener('click', showCart);
+            document.getElementById('close-cart-button').addEventListener('click', hideCart);
+            cartModal.addEventListener('click', (e) => { if (e.target === cartModal) hideCart(); });
+            whatsappOrderButton.addEventListener('click', generateWhatsAppOrderLink);
+            document.getElementById('message-close-button').addEventListener('click', closeMessageBox);
+            document.getElementById('close-quickview-button').addEventListener('click', closeQuickView);
+            quickviewModal.addEventListener('click', (e) => { if (e.target === quickviewModal) closeQuickView(); });
+            document.getElementById('quickview-add-to-cart-btn').addEventListener('click', addToCartFromConfig);
+            
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+
+            // Initial rendering
+            renderProductSegments('All');
+            renderCart();
+        });
+    </script>
+</body>
+</html>
